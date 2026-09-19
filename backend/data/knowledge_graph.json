@@ -1,0 +1,27 @@
+{
+  "domain": "cs_ml_foundations",
+  "concepts": [
+    {"id": "python_basics", "name": "Python Basics", "prerequisites": []},
+    {"id": "numpy", "name": "NumPy", "prerequisites": ["python_basics"]},
+    {"id": "statistics", "name": "Statistics", "prerequisites": ["python_basics"]},
+    {"id": "probability", "name": "Probability", "prerequisites": ["statistics"]},
+    {"id": "linear_algebra", "name": "Linear Algebra", "prerequisites": ["python_basics"]},
+    {"id": "linear_regression", "name": "Linear Regression", "prerequisites": ["probability", "linear_algebra", "numpy"]},
+    {"id": "gradient_descent", "name": "Gradient Descent", "prerequisites": ["linear_regression"]},
+    {"id": "logistic_regression", "name": "Logistic Regression", "prerequisites": ["gradient_descent"]},
+    {"id": "neural_networks", "name": "Neural Networks", "prerequisites": ["gradient_descent", "logistic_regression"]},
+    {"id": "cnn", "name": "Convolutional Neural Networks", "prerequisites": ["neural_networks"]}
+  ],
+  "quiz": [
+    {"id": "q1", "concept": "python_basics", "prompt": "What does len([1,2,3]) return?", "options": ["2", "3", "1", "Error"], "answer": "3", "difficulty": 0.2},
+    {"id": "q2", "concept": "numpy", "prompt": "np.array([1,2,3]).shape returns what?", "options": ["(3,)", "(1,3)", "3", "[3]"], "answer": "(3,)", "difficulty": 0.4},
+    {"id": "q3", "concept": "statistics", "prompt": "What does the standard deviation measure?", "options": ["Central tendency", "Spread of data", "Correlation", "Sample size"], "answer": "Spread of data", "difficulty": 0.3},
+    {"id": "q4", "concept": "probability", "prompt": "P(A and B) for independent A, B equals?", "options": ["P(A)+P(B)", "P(A)*P(B)", "P(A)-P(B)", "max(P(A),P(B))"], "answer": "P(A)*P(B)", "difficulty": 0.5},
+    {"id": "q5", "concept": "linear_algebra", "prompt": "What is the dot product of [1,0] and [0,1]?", "options": ["1", "0", "-1", "undefined"], "answer": "0", "difficulty": 0.4},
+    {"id": "q6", "concept": "linear_regression", "prompt": "Linear regression minimizes which loss by default?", "options": ["Cross-entropy", "Mean squared error", "Hinge loss", "KL divergence"], "answer": "Mean squared error", "difficulty": 0.5},
+    {"id": "q7", "concept": "gradient_descent", "prompt": "A learning rate that's too high typically causes?", "options": ["Faster guaranteed convergence", "Divergence/oscillation", "No effect", "Underfitting only"], "answer": "Divergence/oscillation", "difficulty": 0.6},
+    {"id": "q8", "concept": "logistic_regression", "prompt": "Logistic regression outputs are best interpreted as?", "options": ["Raw scores", "Probabilities via sigmoid", "Cluster IDs", "Distances"], "answer": "Probabilities via sigmoid", "difficulty": 0.6},
+    {"id": "q9", "concept": "neural_networks", "prompt": "What is backpropagation used for?", "options": ["Data loading", "Computing gradients via chain rule", "Feature scaling", "Data augmentation"], "answer": "Computing gradients via chain rule", "difficulty": 0.7},
+    {"id": "q10", "concept": "cnn", "prompt": "Convolutional layers are most associated with which data type?", "options": ["Tabular data", "Grid-like data (images)", "Time series only", "Graphs"], "answer": "Grid-like data (images)", "difficulty": 0.7}
+  ]
+}

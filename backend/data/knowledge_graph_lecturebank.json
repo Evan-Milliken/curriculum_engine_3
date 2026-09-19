@@ -1,0 +1,2342 @@
+{
+  "domain": "cs_nlp_ml_ai_dl_ir__lecturebank",
+  "source": {
+    "dataset": "LectureBank",
+    "citation": "Li, Fabbri, Tung, Radev (2019). What Should I Learn First: Introducing LectureBank for NLP Education and Prerequisite Chain Learning. AAAI 2019.",
+    "url": "https://github.com/Yale-LILY/LectureBank",
+    "license_note": "Check the repository for current license/usage terms before shipping this in a public app — not verified here."
+  },
+  "stats": {
+    "concepts": 208,
+    "edges": 889,
+    "longest_prerequisite_chain": 8
+  },
+  "quiz": [],
+  "concepts": [
+    {
+      "id": "anaphora_resolution__2",
+      "name": "Anaphora Resolution",
+      "wiki_url": "https://en.wikipedia.org/wiki/Anaphora_(linguistics)",
+      "prerequisites": [
+        "context_free_grammar__18",
+        "context_sensitive_grammar__19",
+        "first_order_logic__85",
+        "propositional_logic__118",
+        "chomsky_hierarchy__154"
+      ]
+    },
+    {
+      "id": "generative_adversarial_networks__3",
+      "name": "Generative Adversarial Networks",
+      "wiki_url": "https://en.wikipedia.org/wiki/Generative_adversarial_network",
+      "prerequisites": [
+        "backpropagation__26",
+        "evaluation_metrics__74",
+        "matrix_multiplication__127",
+        "backpropagation_through_time__130",
+        "artificial_neural_network__158",
+        "linear_algebra__202",
+        "probability__203",
+        "descriptive_statistics_and_hypothesis_testing__204",
+        "information_theory_coding__205",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "neural_machine_translation__4",
+      "name": "Neural Machine Translation",
+      "wiki_url": "https://en.wikipedia.org/wiki/Neural_machine_translation",
+      "prerequisites": [
+        "ibm_translation_models__6",
+        "backpropagation__26",
+        "word_embedding__27",
+        "language_modeling__38",
+        "bayes_theorem__47",
+        "matrix_multiplication__127",
+        "differential_calculus__128",
+        "long_short_term_memory_networks__137",
+        "artificial_neural_network__158",
+        "loss_function__168",
+        "data_preprocessing__174",
+        "bidirectional_recurrent_neural_networks__182",
+        "character_level_language_models__186",
+        "seq2seq__195",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "variational_autoencoders__5",
+      "name": "Variational Autoencoders",
+      "wiki_url": "https://en.wikipedia.org/wiki/Autoencoder#Variational_autoencoder_(VAE)",
+      "prerequisites": [
+        "backpropagation__26",
+        "gradient_descent__119",
+        "matrix_multiplication__127",
+        "differential_calculus__128",
+        "backpropagation_through_time__130",
+        "artificial_neural_network__158",
+        "loss_function__168",
+        "feature_learning__171",
+        "entropy__178",
+        "cross_entropy__179",
+        "activation_functions__180",
+        "linear_algebra__202",
+        "probability__203",
+        "information_theory_coding__205",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "ibm_translation_models__6",
+      "name": "IBM Translation Models",
+      "wiki_url": "https://en.wikipedia.org/wiki/IBM_alignment_models",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "conditional_probability__155",
+        "loss_function__168",
+        "data_preprocessing__174",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "bleu__7",
+      "name": "BLEU",
+      "wiki_url": "https://en.wikipedia.org/wiki/BLEU",
+      "prerequisites": [
+        "evaluation_metrics__74"
+      ]
+    },
+    {
+      "id": "rouge__8",
+      "name": "ROUGE",
+      "wiki_url": "https://en.wikipedia.org/wiki/ROUGE_(metric)",
+      "prerequisites": [
+        "evaluation_metrics__74"
+      ]
+    },
+    {
+      "id": "scientific_article_summarization__9",
+      "name": "Scientific article summarization",
+      "wiki_url": null,
+      "prerequisites": [
+        "bleu__7",
+        "rouge__8",
+        "automatic_summarization__54",
+        "multi_document_summarization__57",
+        "matrix_multiplication__127",
+        "bag_of_words_model__159",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "open_information_extraction__10",
+      "name": "Open information extraction",
+      "wiki_url": "https://en.wikipedia.org/wiki/Open_information_extraction",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "text_mining__111",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "sentence_simplification__11",
+      "name": "Sentence simplification",
+      "wiki_url": "https://en.wikipedia.org/wiki/Text_simplification",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "data_preprocessing__174",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "attention_models__12",
+      "name": "Attention Models",
+      "wiki_url": null,
+      "prerequisites": [
+        "artificial_neural_network__158",
+        "feature_learning__171",
+        "regularization__173",
+        "entropy__178",
+        "cross_entropy__179",
+        "activation_functions__180",
+        "seq2seq__195",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "knowledge_graph__13",
+      "name": "Knowledge graph",
+      "wiki_url": "https://en.wikipedia.org/wiki/Ontology_(information_science)",
+      "prerequisites": [
+        "matrix_multiplication__127",
+        "conditional_probability__155",
+        "data_preprocessing__174",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "semantic_role_labeling__14",
+      "name": "Semantic Role Labeling",
+      "wiki_url": "https://en.wikipedia.org/wiki/Semantic_role_labeling",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "conditional_probability__155",
+        "data_preprocessing__174",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "abstract_meaning_representation__15",
+      "name": "Abstract Meaning Representation",
+      "wiki_url": "https://en.wikipedia.org/wiki/Abstract_Meaning_Representation",
+      "prerequisites": [
+        "data_preprocessing__174",
+        "document_representation__194",
+        "linear_algebra__202",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "coreference_and_coreference_resolution__16",
+      "name": "Coreference and Coreference Resolution",
+      "wiki_url": "https://en.wikipedia.org/wiki/Coreference#Coreference_resolution",
+      "prerequisites": [
+        "anaphora_resolution__2"
+      ]
+    },
+    {
+      "id": "machine_reading_comprehension__17",
+      "name": "Machine Reading Comprehension",
+      "wiki_url": null,
+      "prerequisites": [
+        "bayes_theorem__47",
+        "bag_of_words_model__159",
+        "data_preprocessing__174",
+        "document_representation__194",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "context_free_grammar__18",
+      "name": "Context Free Grammar",
+      "wiki_url": "https://en.wikipedia.org/wiki/Context-free_grammar",
+      "prerequisites": [
+        "chomsky_hierarchy__154",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "context_sensitive_grammar__19",
+      "name": "Context sensitive grammar",
+      "wiki_url": "https://en.wikipedia.org/wiki/Context-sensitive_grammar",
+      "prerequisites": [
+        "chomsky_hierarchy__154",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "domain_adaptation__20",
+      "name": "Domain Adaptation",
+      "wiki_url": "https://en.wikipedia.org/wiki/Domain_adaptation",
+      "prerequisites": [
+        "feature_learning__171",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "transfer_learning__21",
+      "name": "Transfer Learning",
+      "wiki_url": "https://en.wikipedia.org/wiki/Transfer_learning",
+      "prerequisites": [
+        "matrix_multiplication__127",
+        "feature_learning__171",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "capsule_networks__22",
+      "name": "Capsule Networks",
+      "wiki_url": null,
+      "prerequisites": [
+        "backpropagation__26",
+        "cnn's__98",
+        "backpropagation_through_time__130",
+        "artificial_neural_network__158",
+        "loss_function__168",
+        "entropy__178",
+        "cross_entropy__179",
+        "activation_functions__180",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "reinforcement_learning__23",
+      "name": "Reinforcement Learning",
+      "wiki_url": "https://en.wikipedia.org/wiki/Reinforcement_learning",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "q_learning__24",
+      "name": "Q Learning",
+      "wiki_url": "https://en.wikipedia.org/wiki/Q-learning",
+      "prerequisites": [
+        "reinforcement_learning__23",
+        "markov_decision_processes__100",
+        "matrix_multiplication__127",
+        "conditional_probability__155",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "dqn__25",
+      "name": "DQN",
+      "wiki_url": null,
+      "prerequisites": [
+        "reinforcement_learning__23",
+        "q_learning__24",
+        "matrix_multiplication__127",
+        "differential_calculus__128",
+        "backpropagation_through_time__130",
+        "artificial_neural_network__158",
+        "loss_function__168",
+        "entropy__178",
+        "cross_entropy__179",
+        "activation_functions__180",
+        "linear_algebra__202",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "backpropagation__26",
+      "name": "Backpropagation",
+      "wiki_url": "https://en.wikipedia.org/wiki/Backpropagation",
+      "prerequisites": [
+        "matrix_multiplication__127",
+        "differential_calculus__128",
+        "loss_function__168",
+        "activation_functions__180",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "word_embedding__27",
+      "name": "Word Embedding",
+      "wiki_url": "https://en.wikipedia.org/wiki/Word_embedding",
+      "prerequisites": [
+        "artificial_neural_network__158",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "logistic_regression__28",
+      "name": "Logistic Regression",
+      "wiki_url": "https://en.wikipedia.org/wiki/Logistic_regression",
+      "prerequisites": [
+        "matrix_multiplication__127",
+        "linear_algebra__202",
+        "probability__203",
+        "information_theory_coding__205"
+      ]
+    },
+    {
+      "id": "semantic_parsing__29",
+      "name": "Semantic Parsing",
+      "wiki_url": "https://en.wikipedia.org/wiki/Semantic_analysis_(computational)",
+      "prerequisites": [
+        "conditional_probability__155",
+        "data_preprocessing__174",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "stemming__30",
+      "name": "Stemming",
+      "wiki_url": "https://en.wikipedia.org/wiki/Stemming",
+      "prerequisites": [
+        "tokenization__121",
+        "data_preprocessing__174",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "sentiment_analysis__31",
+      "name": "Sentiment Analysis",
+      "wiki_url": "https://en.wikipedia.org/wiki/Sentiment_analysis",
+      "prerequisites": [
+        "matrix_multiplication__127",
+        "conditional_probability__155",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "penn_treebank__32",
+      "name": "Penn Treebank",
+      "wiki_url": "https://en.wikipedia.org/wiki/Treebank",
+      "prerequisites": [
+        "context_free_grammar__18",
+        "bayes_theorem__47",
+        "part_of_speech_tagging__52",
+        "chomsky_hierarchy__154",
+        "conditional_probability__155",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "dependency_parsing__33",
+      "name": "Dependency Parsing",
+      "wiki_url": "https://en.wikipedia.org/wiki/Dependency_grammar",
+      "prerequisites": [
+        "chomsky_hierarchy__154",
+        "conditional_probability__155",
+        "linear_algebra__202",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "tree_adjoining_grammar__34",
+      "name": "Tree Adjoining Grammar",
+      "wiki_url": "https://en.wikipedia.org/wiki/Tree-adjoining_grammar",
+      "prerequisites": [
+        "context_free_grammar__18",
+        "context_sensitive_grammar__19",
+        "probabilistic_context_free_grammars__140",
+        "chomsky_hierarchy__154",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "combinatory_categorial_grammar__35",
+      "name": "Combinatory Categorial Grammar",
+      "wiki_url": "https://en.wikipedia.org/wiki/Combinatory_categorial_grammar",
+      "prerequisites": [
+        "context_free_grammar__18",
+        "context_sensitive_grammar__19",
+        "bayes_theorem__47",
+        "part_of_speech_tagging__52",
+        "chomsky_hierarchy__154",
+        "conditional_probability__155",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "relation_extraction__36",
+      "name": "Relation Extraction",
+      "wiki_url": "https://en.wikipedia.org/wiki/Relationship_extraction",
+      "prerequisites": [
+        "named_entity_recognition__39",
+        "bayes_theorem__47",
+        "knowledge_representation__99",
+        "matrix_multiplication__127",
+        "conditional_probability__155",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "event_detection__37",
+      "name": "Event Detection",
+      "wiki_url": null,
+      "prerequisites": [
+        "relation_extraction__36",
+        "named_entity_recognition__39",
+        "bayes_theorem__47",
+        "matrix_multiplication__127",
+        "conditional_probability__155",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "language_modeling__38",
+      "name": "Language Modeling",
+      "wiki_url": "https://en.wikipedia.org/wiki/Language_model",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "conditional_probability__155",
+        "n_gram__165",
+        "linear_algebra__202",
+        "probability__203",
+        "information_theory_coding__205",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "named_entity_recognition__39",
+      "name": "Named Entity Recognition",
+      "wiki_url": "https://en.wikipedia.org/wiki/Named-entity_recognition",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "word_segmentation__40",
+      "name": "Word Segmentation",
+      "wiki_url": "https://en.wikipedia.org/wiki/Text_segmentation",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "conditional_probability__155",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "sentence_boundary_recognition__41",
+      "name": "Sentence Boundary Recognition",
+      "wiki_url": "https://en.wikipedia.org/wiki/Sentence_boundary_disambiguation",
+      "prerequisites": [
+        "conditional_probability__155",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "optical_character_recognition__42",
+      "name": "Optical Character Recognition",
+      "wiki_url": "https://en.wikipedia.org/wiki/Optical_character_recognition",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "conditional_probability__155",
+        "computer_vision__161",
+        "object_detection__164",
+        "feature_learning__171",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "automated_essay_scoring__43",
+      "name": "Automated essay scoring",
+      "wiki_url": "https://en.wikipedia.org/wiki/Automated_essay_scoring",
+      "prerequisites": [
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "latent_dirichlet_allocation__44",
+      "name": "Latent Dirichlet allocation",
+      "wiki_url": "https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "graphical_models__114",
+        "matrix_multiplication__127",
+        "conditional_probability__155",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "latent_semantic_indexing__45",
+      "name": "Latent semantic indexing",
+      "wiki_url": "https://en.wikipedia.org/wiki/Latent_semantic_analysis",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "matrix_multiplication__127",
+        "conditional_probability__155",
+        "feature_learning__171",
+        "document_representation__194",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "language_identification__46",
+      "name": "Language Identification",
+      "wiki_url": "https://en.wikipedia.org/wiki/Language_identification",
+      "prerequisites": [
+        "stemming__30",
+        "word_segmentation__40",
+        "sentence_boundary_recognition__41",
+        "bayes_theorem__47",
+        "conditional_probability__155",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "bayes_theorem__47",
+      "name": "Bayes theorem",
+      "wiki_url": "https://en.wikipedia.org/wiki/Bayes%27_theorem",
+      "prerequisites": [
+        "conditional_probability__155",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "hidden_markov_models__48",
+      "name": "Hidden Markov Models",
+      "wiki_url": "https://en.wikipedia.org/wiki/Hidden_Markov_model",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "conditional_probability__155",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "conditional_random_fields__49",
+      "name": "Conditional Random Fields",
+      "wiki_url": "https://en.wikipedia.org/wiki/Conditional_random_field",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "hidden_markov_models__48",
+        "conditional_probability__155",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "deep_belief_networks__50",
+      "name": "deep belief networks",
+      "wiki_url": "https://en.wikipedia.org/wiki/Deep_belief_network",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "bayesian_network__110",
+        "conditional_probability__155",
+        "entropy__178",
+        "cross_entropy__179",
+        "activation_functions__180",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "word_sense_disambiguation__51",
+      "name": "Word sense disambiguation",
+      "wiki_url": "https://en.wikipedia.org/wiki/Word-sense_disambiguation",
+      "prerequisites": [
+        "anaphora_resolution__2",
+        "conditional_probability__155",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "part_of_speech_tagging__52",
+      "name": "Part of Speech tagging",
+      "wiki_url": "https://en.wikipedia.org/wiki/Part-of-speech_tagging",
+      "prerequisites": [
+        "tokenization__121",
+        "n_gram__165",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "question_answering__53",
+      "name": "Question answering",
+      "wiki_url": "https://en.wikipedia.org/wiki/Question_answering",
+      "prerequisites": [
+        "probability__203"
+      ]
+    },
+    {
+      "id": "automatic_summarization__54",
+      "name": "Automatic summarization",
+      "wiki_url": "https://en.wikipedia.org/wiki/Automatic_summarization",
+      "prerequisites": [
+        "bleu__7",
+        "rouge__8",
+        "bayes_theorem__47",
+        "document_representation__194",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "supertagging__55",
+      "name": "Supertagging",
+      "wiki_url": null,
+      "prerequisites": [
+        "context_free_grammar__18",
+        "context_sensitive_grammar__19",
+        "tree_adjoining_grammar__34",
+        "combinatory_categorial_grammar__35",
+        "chomsky_hierarchy__154"
+      ]
+    },
+    {
+      "id": "recursive_neural_network__56",
+      "name": "Recursive Neural Network",
+      "wiki_url": "https://en.wikipedia.org/wiki/Recursive_neural_network",
+      "prerequisites": [
+        "backpropagation__26",
+        "matrix_multiplication__127",
+        "differential_calculus__128",
+        "backpropagation_through_time__130",
+        "entropy__178",
+        "cross_entropy__179",
+        "activation_functions__180",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "multi_document_summarization__57",
+      "name": "multi-Document Summarization",
+      "wiki_url": "https://en.wikipedia.org/wiki/Multi-document_summarization",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "document_representation__194",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "variational_bayes__58",
+      "name": "Variational Bayes",
+      "wiki_url": "https://en.wikipedia.org/wiki/Variational_Bayesian_methods",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "bayesian_network__110",
+        "conditional_probability__155",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "discourse_model__59",
+      "name": "Discourse Model",
+      "wiki_url": "https://en.wikipedia.org/wiki/Discourse_representation_theory",
+      "prerequisites": [
+        "anaphora_resolution__2",
+        "coreference_and_coreference_resolution__16"
+      ]
+    },
+    {
+      "id": "morphological_disambiguation__60",
+      "name": "Morphological Disambiguation",
+      "wiki_url": "https://en.wikipedia.org/wiki/Morphology",
+      "prerequisites": []
+    },
+    {
+      "id": "weakly_supervised_learning__61",
+      "name": "Weakly-supervised learning",
+      "wiki_url": "https://en.wikipedia.org/wiki/Semi-supervised_learning",
+      "prerequisites": []
+    },
+    {
+      "id": "one_shot_learning__62",
+      "name": "One-shot learning",
+      "wiki_url": "https://en.wikipedia.org/wiki/One-shot_learning",
+      "prerequisites": [
+        "domain_adaptation__20",
+        "transfer_learning__21",
+        "bayes_theorem__47",
+        "feature_learning__171",
+        "information_theory_coding__205",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "neural_turing_machine__63",
+      "name": "Neural turing machine",
+      "wiki_url": "https://en.wikipedia.org/wiki/Neural_Turing_machine",
+      "prerequisites": [
+        "backpropagation__26",
+        "matrix_multiplication__127",
+        "differential_calculus__128",
+        "backpropagation_through_time__130",
+        "entropy__178",
+        "cross_entropy__179",
+        "activation_functions__180",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "bootstrapping__64",
+      "name": "Bootstrapping",
+      "wiki_url": "https://en.wikipedia.org/wiki/Bootstrapping",
+      "prerequisites": [
+        "conditional_probability__155",
+        "probability__203",
+        "descriptive_statistics_and_hypothesis_testing__204",
+        "information_theory_coding__205",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "distributional_semantics__65",
+      "name": "Distributional semantics",
+      "wiki_url": "https://en.wikipedia.org/wiki/Distributional_semantics",
+      "prerequisites": [
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "shallow_parsing__66",
+      "name": "Shallow parsing",
+      "wiki_url": "https://en.wikipedia.org/wiki/Shallow_parsing",
+      "prerequisites": [
+        "penn_treebank__32",
+        "part_of_speech_tagging__52",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "a*_search__67",
+      "name": "A* search",
+      "wiki_url": "https://en.wikipedia.org/wiki/A*_search_algorithm",
+      "prerequisites": [
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "transliteration__68",
+      "name": "Transliteration",
+      "wiki_url": "https://en.wikipedia.org/wiki/Transliteration",
+      "prerequisites": [
+        "language_modeling__38",
+        "data_preprocessing__174",
+        "character_level_language_models__186"
+      ]
+    },
+    {
+      "id": "lexicography__69",
+      "name": "Lexicography",
+      "wiki_url": "https://en.wikipedia.org/wiki/Lexicography",
+      "prerequisites": [
+        "n_gram__165"
+      ]
+    },
+    {
+      "id": "chat_bots__70",
+      "name": "Chat bots",
+      "wiki_url": "https://en.wikipedia.org/wiki/Chatbot",
+      "prerequisites": [
+        "question_answering__53",
+        "conditional_probability__155",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "dialog_systems__71",
+      "name": "Dialog Systems",
+      "wiki_url": "https://en.wikipedia.org/wiki/Dialog_system",
+      "prerequisites": [
+        "language_modeling__38",
+        "bayes_theorem__47",
+        "question_answering__53",
+        "conditional_probability__155",
+        "linear_algebra__202",
+        "probability__203",
+        "information_theory_coding__205",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "multi_task_learning__72",
+      "name": "Multi-task Learning",
+      "wiki_url": "https://en.wikipedia.org/wiki/Multi-task_learning",
+      "prerequisites": []
+    },
+    {
+      "id": "multilingual_word__73",
+      "name": "Multilingual Word",
+      "wiki_url": null,
+      "prerequisites": [
+        "backpropagation__26",
+        "bayes_theorem__47",
+        "distributional_semantics__65",
+        "word2vec__97",
+        "backpropagation_through_time__130",
+        "conditional_probability__155",
+        "artificial_neural_network__158",
+        "loss_function__168",
+        "activation_functions__180",
+        "linear_algebra__202",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "evaluation_metrics__74",
+      "name": "Evaluation Metrics",
+      "wiki_url": "https://en.wikipedia.org/wiki/Precision_and_recall",
+      "prerequisites": [
+        "matrix_multiplication__127",
+        "linear_algebra__202",
+        "probability__203",
+        "information_theory_coding__205",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "linear_regression__75",
+      "name": "Linear Regression",
+      "wiki_url": "https://en.wikipedia.org/wiki/Linear_regression",
+      "prerequisites": [
+        "matrix_multiplication__127",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "convex_optimization__76",
+      "name": "Convex Optimization",
+      "wiki_url": "https://en.wikipedia.org/wiki/Convex_optimization",
+      "prerequisites": [
+        "matrix_multiplication__127",
+        "linear_algebra__202"
+      ]
+    },
+    {
+      "id": "newton_method__77",
+      "name": "Newton Method",
+      "wiki_url": "https://en.wikipedia.org/wiki/Newton%27s_method",
+      "prerequisites": [
+        "convex_optimization__76",
+        "matrix_multiplication__127",
+        "differential_calculus__128",
+        "linear_algebra__202"
+      ]
+    },
+    {
+      "id": "dual_problems__78",
+      "name": "Dual Problems",
+      "wiki_url": "https://en.wikipedia.org/wiki/Duality_(optimization)",
+      "prerequisites": [
+        "convex_optimization__76",
+        "newton_method__77",
+        "matrix_multiplication__127",
+        "differential_calculus__128",
+        "linear_algebra__202"
+      ]
+    },
+    {
+      "id": "random_forest__79",
+      "name": "Random Forest",
+      "wiki_url": "https://en.wikipedia.org/wiki/Random_forest",
+      "prerequisites": [
+        "decision_trees__90",
+        "probability__203",
+        "information_theory_coding__205",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "radial_basis_function_network__80",
+      "name": "Radial Basis Function Network",
+      "wiki_url": "https://en.wikipedia.org/wiki/Radial_basis_function_network",
+      "prerequisites": [
+        "kernel_function__81",
+        "artificial_neural_network__158",
+        "linear_algebra__202",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "kernel_function__81",
+      "name": "Kernel Function",
+      "wiki_url": "https://en.wikipedia.org/wiki/Positive-definite_kernel",
+      "prerequisites": [
+        "matrix_multiplication__127",
+        "linear_algebra__202",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "boltzmann_machine__82",
+      "name": "Boltzmann Machine",
+      "wiki_url": "https://en.wikipedia.org/wiki/Boltzmann_machine",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "conditional_probability__155",
+        "artificial_neural_network__158",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "expectation_maximization_em_algorithm__83",
+      "name": "Expectation-Maximization (EM) Algorithm",
+      "wiki_url": "https://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "conditional_probability__155",
+        "linear_algebra__202",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "dimensionality_reduction__84",
+      "name": "dimensionality reduction",
+      "wiki_url": "https://en.wikipedia.org/wiki/Dimensionality_reduction",
+      "prerequisites": [
+        "matrix_multiplication__127",
+        "linear_algebra__202"
+      ]
+    },
+    {
+      "id": "first_order_logic__85",
+      "name": "First-order logic",
+      "wiki_url": "https://en.wikipedia.org/wiki/First-order_logic",
+      "prerequisites": []
+    },
+    {
+      "id": "natural_language_generation__86",
+      "name": "Natural language generation",
+      "wiki_url": "https://en.wikipedia.org/wiki/Natural_language_generation",
+      "prerequisites": [
+        "language_modeling__38"
+      ]
+    },
+    {
+      "id": "noisy_channel_model__87",
+      "name": "Noisy channel model",
+      "wiki_url": "https://en.wikipedia.org/wiki/Noisy_channel_model",
+      "prerequisites": [
+        "language_modeling__38",
+        "bayes_theorem__47",
+        "conditional_probability__155",
+        "character_level_language_models__186",
+        "linear_algebra__202",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "perceptrons_algorithm__88",
+      "name": "Perceptrons algorithm",
+      "wiki_url": "https://en.wikipedia.org/wiki/Perceptron",
+      "prerequisites": [
+        "backpropagation__26",
+        "matrix_multiplication__127",
+        "differential_calculus__128",
+        "linear_algebra__202",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "svm__89",
+      "name": "SVM",
+      "wiki_url": "https://en.wikipedia.org/wiki/Support_vector_machine",
+      "prerequisites": [
+        "convex_optimization__76",
+        "dual_problems__78",
+        "matrix_multiplication__127",
+        "differential_calculus__128",
+        "loss_function__168",
+        "linear_algebra__202",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "decision_trees__90",
+      "name": "Decision Trees",
+      "wiki_url": "https://en.wikipedia.org/wiki/Decision_tree",
+      "prerequisites": [
+        "entropy__178",
+        "linear_algebra__202",
+        "information_theory_coding__205",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "clustering__91",
+      "name": "Clustering",
+      "wiki_url": "https://en.wikipedia.org/wiki/Cluster_analysis",
+      "prerequisites": [
+        "matrix_multiplication__127",
+        "linear_algebra__202",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "k_nn__92",
+      "name": "K-nn",
+      "wiki_url": "https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm",
+      "prerequisites": [
+        "clustering__91",
+        "matrix_multiplication__127",
+        "linear_algebra__202",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "random_walks__93",
+      "name": "Random walks",
+      "wiki_url": "https://en.wikipedia.org/wiki/Random_walk",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "conditional_probability__155",
+        "linear_algebra__202",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "harmonic_functions__94",
+      "name": "Harmonic functions",
+      "wiki_url": "https://en.wikipedia.org/wiki/Harmonic_function",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "matrix_multiplication__127",
+        "conditional_probability__155",
+        "linear_algebra__202",
+        "probability__203",
+        "dual_decomposition__209"
+      ]
+    },
+    {
+      "id": "pagerank__95",
+      "name": "PageRank",
+      "wiki_url": "https://en.wikipedia.org/wiki/PageRank",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "linear_algebra__202",
+        "probability__203",
+        "information_theory_coding__205",
+        "dual_decomposition__209"
+      ]
+    },
+    {
+      "id": "topic_modeling__96",
+      "name": "Topic modeling",
+      "wiki_url": "https://en.wikipedia.org/wiki/Topic_model",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "graphical_models__114",
+        "matrix_multiplication__127",
+        "gibbs_sampling__150",
+        "conditional_probability__155",
+        "kullback_leibler_divergence__181",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "word2vec__97",
+      "name": "Word2Vec",
+      "wiki_url": "https://en.wikipedia.org/wiki/Word2vec",
+      "prerequisites": [
+        "backpropagation__26",
+        "word_embedding__27",
+        "distributional_semantics__65",
+        "matrix_multiplication__127",
+        "differential_calculus__128",
+        "loss_function__168",
+        "activation_functions__180",
+        "linear_algebra__202",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "cnn's__98",
+      "name": "CNN's",
+      "wiki_url": "https://en.wikipedia.org/wiki/Convolutional_neural_network",
+      "prerequisites": [
+        "backpropagation__26",
+        "matrix_multiplication__127",
+        "differential_calculus__128",
+        "backpropagation_through_time__130",
+        "artificial_neural_network__158",
+        "loss_function__168",
+        "entropy__178",
+        "cross_entropy__179",
+        "activation_functions__180",
+        "linear_algebra__202",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "knowledge_representation__99",
+      "name": "Knowledge representation",
+      "wiki_url": "https://en.wikipedia.org/wiki/Knowledge_representation_and_reasoning",
+      "prerequisites": [
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "markov_decision_processes__100",
+      "name": "Markov decision processes",
+      "wiki_url": "https://en.wikipedia.org/wiki/Markov_decision_process",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "matrix_multiplication__127",
+        "conditional_probability__155",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "autonomous_cars__101",
+      "name": "Autonomous cars",
+      "wiki_url": "https://en.wikipedia.org/wiki/Autonomous_car",
+      "prerequisites": [
+        "computer_vision__161",
+        "image_retrieval__162",
+        "object_detection__164"
+      ]
+    },
+    {
+      "id": "phonetics__102",
+      "name": "Phonetics",
+      "wiki_url": "https://en.wikipedia.org/wiki/Phonetics",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "conditional_probability__155",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "speech_recognition__103",
+      "name": "Speech recognition",
+      "wiki_url": "https://en.wikipedia.org/wiki/Speech_recognition",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "hidden_markov_models__48",
+        "matrix_multiplication__127",
+        "conditional_probability__155",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "crowdsourcing__104",
+      "name": "Crowdsourcing",
+      "wiki_url": "https://en.wikipedia.org/wiki/Crowdsourcing",
+      "prerequisites": [
+        "descriptive_statistics_and_hypothesis_testing__204"
+      ]
+    },
+    {
+      "id": "matrix_factorization__105",
+      "name": "Matrix factorization",
+      "wiki_url": "https://en.wikipedia.org/wiki/Matrix_decomposition",
+      "prerequisites": [
+        "matrix_multiplication__127",
+        "linear_algebra__202"
+      ]
+    },
+    {
+      "id": "spectral_methods__106",
+      "name": "Spectral methods",
+      "wiki_url": "https://en.wikipedia.org/wiki/Spectral_method",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "matrix_multiplication__127",
+        "differential_calculus__128",
+        "conditional_probability__155",
+        "linear_algebra__202",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "genetic_algorithms__107",
+      "name": "Genetic algorithms",
+      "wiki_url": "https://en.wikipedia.org/wiki/Genetic_algorithm",
+      "prerequisites": [
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "ensemble_learning__108",
+      "name": "Ensemble learning",
+      "wiki_url": "https://en.wikipedia.org/wiki/Ensemble_learning",
+      "prerequisites": [
+        "bias_variance_tradeoff__160",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "expert_systems__109",
+      "name": "Expert systems",
+      "wiki_url": "https://en.wikipedia.org/wiki/Expert_system",
+      "prerequisites": [
+        "knowledge_graph__13",
+        "first_order_logic__85",
+        "bayesian_network__110",
+        "graphical_models__114",
+        "dual_decomposition__209"
+      ]
+    },
+    {
+      "id": "bayesian_network__110",
+      "name": "Bayesian network",
+      "wiki_url": "https://en.wikipedia.org/wiki/Bayesian_network",
+      "prerequisites": []
+    },
+    {
+      "id": "text_mining__111",
+      "name": "Text mining",
+      "wiki_url": "https://en.wikipedia.org/wiki/Text_mining",
+      "prerequisites": [
+        "n_gram__165",
+        "data_preprocessing__174",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "bagging__112",
+      "name": "Bagging",
+      "wiki_url": "https://en.wikipedia.org/wiki/Bootstrap_aggregating",
+      "prerequisites": [
+        "bootstrapping__64",
+        "ensemble_learning__108",
+        "probability__203",
+        "descriptive_statistics_and_hypothesis_testing__204",
+        "information_theory_coding__205",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "maximum_likelihood_estimation__113",
+      "name": "Maximum likelihood estimation",
+      "wiki_url": "https://en.wikipedia.org/wiki/Maximum_likelihood_estimation",
+      "prerequisites": [
+        "matrix_multiplication__127",
+        "linear_algebra__202",
+        "descriptive_statistics_and_hypothesis_testing__204"
+      ]
+    },
+    {
+      "id": "graphical_models__114",
+      "name": "Graphical models",
+      "wiki_url": "https://en.wikipedia.org/wiki/Graphical_model",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "matrix_multiplication__127",
+        "conditional_probability__155",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208",
+        "dual_decomposition__209"
+      ]
+    },
+    {
+      "id": "markov_chain_monte_carlo__115",
+      "name": "Markov Chain Monte Carlo",
+      "wiki_url": "https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "hidden_markov_models__48",
+        "conditional_probability__155",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "k_means__116",
+      "name": "K means",
+      "wiki_url": "https://en.wikipedia.org/wiki/K-means_clustering",
+      "prerequisites": [
+        "clustering__91",
+        "matrix_multiplication__127",
+        "linear_algebra__202",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "earley_parsing__117",
+      "name": "Earley parsing",
+      "wiki_url": "https://en.wikipedia.org/wiki/Earley_parser",
+      "prerequisites": [
+        "context_free_grammar__18",
+        "dynamic_programming__145",
+        "chomsky_hierarchy__154"
+      ]
+    },
+    {
+      "id": "propositional_logic__118",
+      "name": "Propositional Logic",
+      "wiki_url": "https://en.wikipedia.org/wiki/Propositional_calculus",
+      "prerequisites": []
+    },
+    {
+      "id": "gradient_descent__119",
+      "name": "Gradient descent",
+      "wiki_url": "https://en.wikipedia.org/wiki/Gradient_descent",
+      "prerequisites": [
+        "matrix_multiplication__127",
+        "differential_calculus__128",
+        "loss_function__168",
+        "activation_functions__180",
+        "linear_algebra__202"
+      ]
+    },
+    {
+      "id": "search_engine_indexing__120",
+      "name": "Search Engine indexing",
+      "wiki_url": "https://en.wikipedia.org/wiki/Search_engine_indexing",
+      "prerequisites": [
+        "document_representation__194"
+      ]
+    },
+    {
+      "id": "tokenization__121",
+      "name": "Tokenization",
+      "wiki_url": "https://en.wikipedia.org/wiki/Lexical_analysis#Tokenization",
+      "prerequisites": []
+    },
+    {
+      "id": "finite_state_machines__122",
+      "name": "Finite-state machines",
+      "wiki_url": "https://en.wikipedia.org/wiki/Finite-state_machine",
+      "prerequisites": []
+    },
+    {
+      "id": "textual_entailment__123",
+      "name": "Textual entailment",
+      "wiki_url": "https://en.wikipedia.org/wiki/Textual_entailment",
+      "prerequisites": [
+        "first_order_logic__85"
+      ]
+    },
+    {
+      "id": "constraint_satisfaction__124",
+      "name": "Constraint satisfaction",
+      "wiki_url": "https://en.wikipedia.org/wiki/Constraint_satisfaction_problem",
+      "prerequisites": [
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "beam_search__125",
+      "name": "Beam search",
+      "wiki_url": "https://en.wikipedia.org/wiki/Beam_search",
+      "prerequisites": [
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "recommendation_system__126",
+      "name": "Recommendation System",
+      "wiki_url": "https://en.wikipedia.org/wiki/Recommender_system",
+      "prerequisites": [
+        "matrix_factorization__105",
+        "linear_algebra__202",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "matrix_multiplication__127",
+      "name": "Matrix multiplication",
+      "wiki_url": "https://en.wikipedia.org/wiki/Matrix_multiplication",
+      "prerequisites": []
+    },
+    {
+      "id": "differential_calculus__128",
+      "name": "Differential calculus",
+      "wiki_url": "https://en.wikipedia.org/wiki/Differential_calculus",
+      "prerequisites": [
+        "matrix_multiplication__127",
+        "linear_algebra__202"
+      ]
+    },
+    {
+      "id": "facial_recognition_systems__129",
+      "name": "Facial Recognition Systems",
+      "wiki_url": "https://en.wikipedia.org/wiki/Facial_recognition_system",
+      "prerequisites": [
+        "computer_vision__161",
+        "object_detection__164"
+      ]
+    },
+    {
+      "id": "backpropagation_through_time__130",
+      "name": "Backpropagation through time",
+      "wiki_url": "https://en.wikipedia.org/wiki/Backpropagation_through_time",
+      "prerequisites": [
+        "backpropagation__26",
+        "gradient_descent__119",
+        "matrix_multiplication__127",
+        "loss_function__168",
+        "activation_functions__180",
+        "linear_algebra__202",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "grammar_checker__131",
+      "name": "Grammar checker",
+      "wiki_url": "https://en.wikipedia.org/wiki/Grammar_checker",
+      "prerequisites": [
+        "semantic_parsing__29",
+        "dependency_parsing__33",
+        "bayes_theorem__47",
+        "hidden_markov_models__48",
+        "conditional_probability__155",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "shift_reduce_parsing__132",
+      "name": "Shift-Reduce Parsing",
+      "wiki_url": "https://en.wikipedia.org/wiki/Shift-reduce_parser",
+      "prerequisites": [
+        "context_free_grammar__18",
+        "penn_treebank__32",
+        "part_of_speech_tagging__52",
+        "chomsky_hierarchy__154",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "speech_synthesis__133",
+      "name": "Speech Synthesis",
+      "wiki_url": "https://en.wikipedia.org/wiki/Speech_synthesis",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "hidden_markov_models__48",
+        "phonetics__102",
+        "conditional_probability__155",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "caption_generation__134",
+      "name": "Caption generation",
+      "wiki_url": "https://en.wikipedia.org/wiki/Automatic_image_annotation",
+      "prerequisites": [
+        "language_modeling__38",
+        "natural_language_generation__86",
+        "computer_vision__161"
+      ]
+    },
+    {
+      "id": "linear_programming__135",
+      "name": "Linear Programming",
+      "wiki_url": "https://en.wikipedia.org/wiki/Linear_programming",
+      "prerequisites": [
+        "convex_optimization__76",
+        "dual_problems__78",
+        "matrix_multiplication__127",
+        "linear_algebra__202"
+      ]
+    },
+    {
+      "id": "inference__136",
+      "name": "Inference",
+      "wiki_url": "https://en.wikipedia.org/wiki/Inference",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "conditional_probability__155",
+        "probability__203",
+        "descriptive_statistics_and_hypothesis_testing__204"
+      ]
+    },
+    {
+      "id": "long_short_term_memory_networks__137",
+      "name": "Long Short-term memory networks",
+      "wiki_url": "https://en.wikipedia.org/wiki/Long_short-term_memory",
+      "prerequisites": [
+        "backpropagation__26",
+        "gradient_descent__119",
+        "matrix_multiplication__127",
+        "backpropagation_through_time__130",
+        "artificial_neural_network__158",
+        "loss_function__168",
+        "activation_functions__180",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "wordnet__138",
+      "name": "Wordnet",
+      "wiki_url": "https://en.wikipedia.org/wiki/WordNet",
+      "prerequisites": [
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "natural_language_interfaces__139",
+      "name": "Natural Language Interfaces",
+      "wiki_url": "https://en.wikipedia.org/wiki/Natural-language_user_interface",
+      "prerequisites": [
+        "knowledge_representation__99"
+      ]
+    },
+    {
+      "id": "probabilistic_context_free_grammars__140",
+      "name": "Probabilistic context-free grammars",
+      "wiki_url": "https://en.wikipedia.org/wiki/Probabilistic_context-free_grammar",
+      "prerequisites": [
+        "context_free_grammar__18",
+        "chomsky_hierarchy__154",
+        "conditional_probability__155",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "paraphrasing__141",
+      "name": "Paraphrasing",
+      "wiki_url": "https://en.wikipedia.org/wiki/Paraphrase",
+      "prerequisites": [
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "spectral_clustering__142",
+      "name": "Spectral clustering",
+      "wiki_url": "https://en.wikipedia.org/wiki/Spectral_clustering",
+      "prerequisites": [
+        "clustering__91",
+        "harmonic_functions__94",
+        "matrix_multiplication__127",
+        "linear_algebra__202",
+        "relational_databases__208",
+        "dual_decomposition__209"
+      ]
+    },
+    {
+      "id": "particle_filter__143",
+      "name": "Particle filter",
+      "wiki_url": "https://en.wikipedia.org/wiki/Particle_filter",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "markov_chain_monte_carlo__115",
+        "conditional_probability__155",
+        "probability__203",
+        "descriptive_statistics_and_hypothesis_testing__204"
+      ]
+    },
+    {
+      "id": "prosody__144",
+      "name": "Prosody",
+      "wiki_url": "https://en.wikipedia.org/wiki/Prosody_(linguistics)",
+      "prerequisites": [
+        "phonetics__102"
+      ]
+    },
+    {
+      "id": "dynamic_programming__145",
+      "name": "Dynamic Programming",
+      "wiki_url": "https://en.wikipedia.org/wiki/Dynamic_programming",
+      "prerequisites": [
+        "matrix_multiplication__127",
+        "linear_algebra__202",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "language_acquisition__146",
+      "name": "Language acquisition",
+      "wiki_url": "https://en.wikipedia.org/wiki/Language_acquisition",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "chomsky_hierarchy__154",
+        "conditional_probability__155",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "spelling_correction__147",
+      "name": "Spelling correction",
+      "wiki_url": "https://en.wikipedia.org/wiki/Spell_checker",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "noisy_channel_model__87",
+        "edit_distance__153",
+        "conditional_probability__155",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "log_linear_models__148",
+      "name": "Log-linear models",
+      "wiki_url": "https://en.wikipedia.org/wiki/Log-linear_model",
+      "prerequisites": [
+        "matrix_multiplication__127",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "gated_recurrent_units__149",
+      "name": "Gated recurrent units",
+      "wiki_url": "https://en.wikipedia.org/wiki/Gated_recurrent_unit",
+      "prerequisites": [
+        "backpropagation__26",
+        "gradient_descent__119",
+        "matrix_multiplication__127",
+        "loss_function__168",
+        "activation_functions__180",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "gibbs_sampling__150",
+      "name": "Gibbs sampling",
+      "wiki_url": "https://en.wikipedia.org/wiki/Gibbs_sampling",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "hidden_markov_models__48",
+        "markov_chain_monte_carlo__115",
+        "matrix_multiplication__127",
+        "conditional_probability__155",
+        "linear_algebra__202",
+        "probability__203",
+        "descriptive_statistics_and_hypothesis_testing__204"
+      ]
+    },
+    {
+      "id": "statistical_machine_translation__151",
+      "name": "Statistical machine translation",
+      "wiki_url": "https://en.wikipedia.org/wiki/Statistical_machine_translation",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "maximum_likelihood_estimation__113",
+        "conditional_probability__155",
+        "probability__203",
+        "descriptive_statistics_and_hypothesis_testing__204",
+        "information_theory_coding__205"
+      ]
+    },
+    {
+      "id": "compositional_semantics__152",
+      "name": "Compositional semantics",
+      "wiki_url": null,
+      "prerequisites": [
+        "context_free_grammar__18",
+        "context_sensitive_grammar__19",
+        "probabilistic_context_free_grammars__140",
+        "chomsky_hierarchy__154"
+      ]
+    },
+    {
+      "id": "edit_distance__153",
+      "name": "Edit distance",
+      "wiki_url": "https://en.wikipedia.org/wiki/Edit_distance",
+      "prerequisites": []
+    },
+    {
+      "id": "chomsky_hierarchy__154",
+      "name": "Chomsky hierarchy",
+      "wiki_url": "https://en.wikipedia.org/wiki/Chomsky_hierarchy",
+      "prerequisites": []
+    },
+    {
+      "id": "conditional_probability__155",
+      "name": "Conditional probability",
+      "wiki_url": "https://en.wikipedia.org/wiki/Conditional_probability",
+      "prerequisites": [
+        "probability__203"
+      ]
+    },
+    {
+      "id": "linear_discriminant_analysis__156",
+      "name": "Linear discriminant analysis",
+      "wiki_url": "https://en.wikipedia.org/wiki/Linear_discriminant_analysis",
+      "prerequisites": [
+        "matrix_multiplication__127",
+        "linear_algebra__202",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "regular_expressions__157",
+      "name": "Regular expressions",
+      "wiki_url": "https://en.wikipedia.org/wiki/Regular_expression",
+      "prerequisites": []
+    },
+    {
+      "id": "artificial_neural_network__158",
+      "name": "Artificial neural network",
+      "wiki_url": "https://en.wikipedia.org/wiki/Artificial_neural_network",
+      "prerequisites": [
+        "backpropagation__26",
+        "gradient_descent__119",
+        "loss_function__168",
+        "activation_functions__180",
+        "linear_algebra__202",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "bag_of_words_model__159",
+      "name": "Bag of words model",
+      "wiki_url": "https://en.wikipedia.org/wiki/Bag-of-words_model",
+      "prerequisites": [
+        "n_gram__165",
+        "linear_algebra__202",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "bias_variance_tradeoff__160",
+      "name": "Bias-variance tradeoff",
+      "wiki_url": "https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff",
+      "prerequisites": [
+        "loss_function__168",
+        "descriptive_statistics_and_hypothesis_testing__204",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "computer_vision__161",
+      "name": "Computer Vision",
+      "wiki_url": "https://en.wikipedia.org/wiki/Computer_vision",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "matrix_multiplication__127",
+        "conditional_probability__155",
+        "linear_algebra__202",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "image_retrieval__162",
+      "name": "Image Retrieval",
+      "wiki_url": "https://en.wikipedia.org/wiki/Image_retrieval",
+      "prerequisites": [
+        "computer_vision__161"
+      ]
+    },
+    {
+      "id": "imagenet__163",
+      "name": "ImageNet",
+      "wiki_url": "https://en.wikipedia.org/wiki/ImageNet",
+      "prerequisites": []
+    },
+    {
+      "id": "object_detection__164",
+      "name": "Object Detection",
+      "wiki_url": "https://en.wikipedia.org/wiki/Object_detection",
+      "prerequisites": [
+        "computer_vision__161",
+        "image_retrieval__162"
+      ]
+    },
+    {
+      "id": "n_gram__165",
+      "name": "N-gram",
+      "wiki_url": "https://en.wikipedia.org/wiki/N-gram#Skip-gram",
+      "prerequisites": [
+        "tokenization__121",
+        "data_preprocessing__174"
+      ]
+    },
+    {
+      "id": "singular_value_decomposition__166",
+      "name": "Singular-value decomposition",
+      "wiki_url": "https://en.wikipedia.org/wiki/Singular-value_decomposition",
+      "prerequisites": [
+        "matrix_multiplication__127",
+        "linear_algebra__202"
+      ]
+    },
+    {
+      "id": "t_sne__167",
+      "name": "T-SNE",
+      "wiki_url": "https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding",
+      "prerequisites": [
+        "dimensionality_reduction__84",
+        "matrix_multiplication__127",
+        "singular_value_decomposition__166",
+        "linear_algebra__202"
+      ]
+    },
+    {
+      "id": "loss_function__168",
+      "name": "Loss Function",
+      "wiki_url": "https://en.wikipedia.org/wiki/Loss_function",
+      "prerequisites": [
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "monte_carlo_tree_search__169",
+      "name": "Monte Carlo Tree Search",
+      "wiki_url": "https://en.wikipedia.org/wiki/Monte_Carlo_tree_search",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "hidden_markov_models__48",
+        "markov_chain_monte_carlo__115",
+        "conditional_probability__155",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "structured_prediction__170",
+      "name": "Structured Prediction",
+      "wiki_url": "https://en.wikipedia.org/wiki/Structured_prediction",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "matrix_multiplication__127",
+        "conditional_probability__155",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "feature_learning__171",
+      "name": "Feature Learning",
+      "wiki_url": "https://en.wikipedia.org/wiki/Feature_learning",
+      "prerequisites": [
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "normalization__172",
+      "name": "Normalization",
+      "wiki_url": null,
+      "prerequisites": [
+        "matrix_multiplication__127",
+        "data_preprocessing__174",
+        "linear_algebra__202"
+      ]
+    },
+    {
+      "id": "regularization__173",
+      "name": "Regularization",
+      "wiki_url": "https://en.wikipedia.org/wiki/Regularization_(mathematics)",
+      "prerequisites": [
+        "matrix_multiplication__127",
+        "data_preprocessing__174",
+        "linear_algebra__202"
+      ]
+    },
+    {
+      "id": "data_preprocessing__174",
+      "name": "Data preprocessing",
+      "wiki_url": "https://en.wikipedia.org/wiki/Data_pre-processing",
+      "prerequisites": []
+    },
+    {
+      "id": "robotic_locomotion__175",
+      "name": "Robotic locomotion",
+      "wiki_url": "https://en.wikipedia.org/wiki/Robot_locomotion",
+      "prerequisites": [
+        "matrix_multiplication__127",
+        "linear_algebra__202",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "human_robot_interaction__176",
+      "name": "Human-robot interaction",
+      "wiki_url": "https://en.wikipedia.org/wiki/Human%E2%80%93robot_interaction",
+      "prerequisites": []
+    },
+    {
+      "id": "network_theory__177",
+      "name": "Network theory",
+      "wiki_url": "https://en.wikipedia.org/wiki/Network_theory",
+      "prerequisites": [
+        "relational_databases__208",
+        "dual_decomposition__209"
+      ]
+    },
+    {
+      "id": "entropy__178",
+      "name": "Entropy",
+      "wiki_url": "https://en.wikipedia.org/wiki/Entropy_(information_theory)",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "matrix_multiplication__127",
+        "linear_algebra__202",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "cross_entropy__179",
+      "name": "Cross entropy",
+      "wiki_url": "https://en.wikipedia.org/wiki/Entropy_(information_theory)",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "matrix_multiplication__127",
+        "loss_function__168",
+        "entropy__178",
+        "linear_algebra__202",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "activation_functions__180",
+      "name": "Activation functions",
+      "wiki_url": "https://en.wikipedia.org/wiki/Activation_function",
+      "prerequisites": [
+        "matrix_multiplication__127",
+        "linear_algebra__202",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "kullback_leibler_divergence__181",
+      "name": "Kullback-Leibler divergence",
+      "wiki_url": "https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence",
+      "prerequisites": [
+        "differential_calculus__128",
+        "entropy__178",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "bidirectional_recurrent_neural_networks__182",
+      "name": "Bidirectional recurrent neural networks",
+      "wiki_url": "https://en.wikipedia.org/wiki/Bidirectional_recurrent_neural_networks",
+      "prerequisites": [
+        "backpropagation__26",
+        "gradient_descent__119",
+        "matrix_multiplication__127",
+        "differential_calculus__128",
+        "backpropagation_through_time__130",
+        "gated_recurrent_units__149",
+        "entropy__178",
+        "cross_entropy__179",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "query_expansion__183",
+      "name": "Query Expansion",
+      "wiki_url": "https://en.wikipedia.org/wiki/Query_expansion",
+      "prerequisites": [
+        "document_representation__194"
+      ]
+    },
+    {
+      "id": "bio_text_mining__184",
+      "name": "Bio Text Mining",
+      "wiki_url": "https://en.wikipedia.org/wiki/Biomedical_text_mining",
+      "prerequisites": [
+        "open_information_extraction__10",
+        "text_mining__111",
+        "data_preprocessing__174",
+        "document_representation__194"
+      ]
+    },
+    {
+      "id": "collaborative_filtering__185",
+      "name": "Collaborative filtering",
+      "wiki_url": "https://en.wikipedia.org/wiki/Collaborative_filtering",
+      "prerequisites": [
+        "matrix_factorization__105",
+        "recommendation_system__126",
+        "matrix_multiplication__127",
+        "linear_algebra__202"
+      ]
+    },
+    {
+      "id": "character_level_language_models__186",
+      "name": "character level language models",
+      "wiki_url": null,
+      "prerequisites": [
+        "language_modeling__38",
+        "bayes_theorem__47",
+        "matrix_multiplication__127",
+        "conditional_probability__155",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "hierarchical_models__187",
+      "name": "Hierarchical models",
+      "wiki_url": "https://en.wikipedia.org/wiki/Multilevel_model",
+      "prerequisites": [
+        "descriptive_statistics_and_hypothesis_testing__204"
+      ]
+    },
+    {
+      "id": "smoothing_and_backoff__188",
+      "name": "smoothing and backoff",
+      "wiki_url": "https://en.wikipedia.org/wiki/Katz%27s_back-off_model",
+      "prerequisites": [
+        "language_modeling__38",
+        "n_gram__165"
+      ]
+    },
+    {
+      "id": "policy_gradient_methods__189",
+      "name": "Policy gradient methods",
+      "wiki_url": "https://en.wikipedia.org/wiki/Reinforcement_learning",
+      "prerequisites": [
+        "reinforcement_learning__23",
+        "q_learning__24",
+        "bayes_theorem__47",
+        "matrix_multiplication__127",
+        "differential_calculus__128",
+        "conditional_probability__155",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "crawling_the_web__190",
+      "name": "Crawling the Web",
+      "wiki_url": "https://en.wikipedia.org/wiki/Web_crawler",
+      "prerequisites": [
+        "open_information_extraction__10",
+        "text_mining__111",
+        "data_preprocessing__174"
+      ]
+    },
+    {
+      "id": "citation_networks__191",
+      "name": "citation networks",
+      "wiki_url": "https://en.wikipedia.org/wiki/Citation_network",
+      "prerequisites": [
+        "relation_extraction__36",
+        "bayes_theorem__47",
+        "graphical_models__114",
+        "matrix_multiplication__127",
+        "conditional_probability__155",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208",
+        "dual_decomposition__209"
+      ]
+    },
+    {
+      "id": "greedy_algorithms__192",
+      "name": "Greedy algorithms",
+      "wiki_url": "https://en.wikipedia.org/wiki/Greedy_algorithm",
+      "prerequisites": [
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "pointer_networks__193",
+      "name": "pointer networks",
+      "wiki_url": null,
+      "prerequisites": [
+        "word_embedding__27",
+        "bayes_theorem__47",
+        "word2vec__97",
+        "conditional_probability__155",
+        "seq2seq__195",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "document_representation__194",
+      "name": "document representation",
+      "wiki_url": null,
+      "prerequisites": [
+        "sentence_boundary_recognition__41",
+        "matrix_multiplication__127",
+        "data_preprocessing__174",
+        "linear_algebra__202",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "seq2seq__195",
+      "name": "Seq2seq",
+      "wiki_url": null,
+      "prerequisites": [
+        "backpropagation__26",
+        "word_embedding__27",
+        "distributional_semantics__65",
+        "word2vec__97",
+        "matrix_multiplication__127",
+        "differential_calculus__128",
+        "backpropagation_through_time__130",
+        "artificial_neural_network__158",
+        "entropy__178",
+        "cross_entropy__179",
+        "activation_functions__180",
+        "linear_algebra__202",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "game_playing_in_ai__196",
+      "name": "Game playing in AI",
+      "wiki_url": "https://en.wikipedia.org/wiki/Artificial_intelligence_(video_games)",
+      "prerequisites": []
+    },
+    {
+      "id": "graph_convolutional_networks__197",
+      "name": "graph convolutional networks",
+      "wiki_url": null,
+      "prerequisites": [
+        "cnn's__98",
+        "matrix_multiplication__127",
+        "differential_calculus__128",
+        "entropy__178",
+        "cross_entropy__179",
+        "activation_functions__180",
+        "linear_algebra__202",
+        "relational_databases__208",
+        "dual_decomposition__209"
+      ]
+    },
+    {
+      "id": "lambda_calculus__198",
+      "name": "Lambda calculus",
+      "wiki_url": "https://en.wikipedia.org/wiki/Lambda_calculus",
+      "prerequisites": [
+        "first_order_logic__85"
+      ]
+    },
+    {
+      "id": "highway_networks__199",
+      "name": "Highway networks",
+      "wiki_url": "https://en.wikipedia.org/wiki/Highway_network",
+      "prerequisites": [
+        "backpropagation__26",
+        "gradient_descent__119",
+        "matrix_multiplication__127",
+        "differential_calculus__128",
+        "backpropagation_through_time__130",
+        "artificial_neural_network__158",
+        "loss_function__168",
+        "entropy__178",
+        "cross_entropy__179",
+        "activation_functions__180",
+        "linear_algebra__202",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "stack_lstm__200",
+      "name": "Stack lstm",
+      "wiki_url": null,
+      "prerequisites": [
+        "gradient_descent__119",
+        "matrix_multiplication__127",
+        "differential_calculus__128",
+        "backpropagation_through_time__130",
+        "long_short_term_memory_networks__137",
+        "artificial_neural_network__158",
+        "loss_function__168",
+        "entropy__178",
+        "cross_entropy__179",
+        "activation_functions__180",
+        "linear_algebra__202",
+        "probability__203",
+        "relational_databases__208"
+      ]
+    },
+    {
+      "id": "multi_modal_learning__201",
+      "name": "multi-modal learning",
+      "wiki_url": "https://en.wikipedia.org/wiki/Multimodal_learning",
+      "prerequisites": [
+        "bayes_theorem__47",
+        "boltzmann_machine__82",
+        "matrix_multiplication__127",
+        "conditional_probability__155",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "linear_algebra__202",
+      "name": "linear algebra",
+      "wiki_url": null,
+      "prerequisites": []
+    },
+    {
+      "id": "probability__203",
+      "name": "Probability",
+      "wiki_url": null,
+      "prerequisites": []
+    },
+    {
+      "id": "descriptive_statistics_and_hypothesis_testing__204",
+      "name": "descriptive statistics and hypothesis testing",
+      "wiki_url": null,
+      "prerequisites": [
+        "probability__203"
+      ]
+    },
+    {
+      "id": "information_theory_coding__205",
+      "name": "Information Theory: coding",
+      "wiki_url": "compression",
+      "prerequisites": [
+        "entropy__178",
+        "probability__203"
+      ]
+    },
+    {
+      "id": "data_structures_and_algorithms__206",
+      "name": "data structures and algorithms",
+      "wiki_url": null,
+      "prerequisites": []
+    },
+    {
+      "id": "graph_theory__207",
+      "name": "graph theory",
+      "wiki_url": null,
+      "prerequisites": [
+        "bayes_theorem__47",
+        "matrix_multiplication__127",
+        "conditional_probability__155",
+        "linear_algebra__202"
+      ]
+    },
+    {
+      "id": "relational_databases__208",
+      "name": "relational databases",
+      "wiki_url": null,
+      "prerequisites": []
+    },
+    {
+      "id": "dual_decomposition__209",
+      "name": "dual decomposition",
+      "wiki_url": null,
+      "prerequisites": [
+        "relational_databases__208"
+      ]
+    }
+  ]
+}
