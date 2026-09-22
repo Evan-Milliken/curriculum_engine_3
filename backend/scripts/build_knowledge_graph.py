@@ -141,7 +141,7 @@ def main():
                          "Chain Learning. AAAI 2019.",
             "url": "https://github.com/Yale-LILY/LectureBank",
             "license_note": "Check the repository for current license/usage terms "
-                             "before shipping this in a public app — not verified here.",
+                             "before shipping this in a public app; not verified here.",
         },
         "stats": {
             "concepts": G.number_of_nodes(),

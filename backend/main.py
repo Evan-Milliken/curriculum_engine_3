@@ -45,10 +45,22 @@ from knowledge_graph import get_knowledge_graph, list_domains
 from scoring import score_resources
 from optimizer import group_knapsack
 from bandit import ARM_NAMES
+from ml import predictor as gain_predictor
+from ml.train_gain_predictor import train as train_gain_predictor
 import db
 
-app = FastAPI(title="Context-Aware Adaptive Curriculum Engine", version="0.3.0")
+app = FastAPI(title="Context-Aware Adaptive Curriculum Engine", version="0.4.0")
 db.init_db()
+
+# Auto-train the local neural network on first run so the app works
+# immediately after a fresh clone -- no manual step, no external API key,
+# ever. This trains a real scikit-learn MLPRegressor in a few seconds
+# (see ml/train_gain_predictor.py) and saves it to ml/gain_predictor.joblib;
+# subsequent restarts just load the saved file.
+if not gain_predictor.is_available():
+    print("No trained gain-prediction model found -- training one now "
+          "(local neural network, one-time, a few seconds)...")
+    train_gain_predictor()
 
 app.add_middleware(
     CORSMiddleware,
@@ -164,6 +176,60 @@ def get_learner_graph(learner_id: str):
     return viz
 
 
+@app.get("/learners/{learner_id}/concepts/{concept_id}")
+def get_concept_detail(learner_id: str, concept_id: str):
+    """
+    Powers the clickable journey-path / knowledge-map nodes: returns
+    everything worth showing about one concept for this learner -- its
+    mastery, prerequisite status, and every resource available for it
+    (each with its live predicted_gain from the neural network, so the
+    detail view can show WHY a resource would or wouldn't be recommended
+    for this concept right now).
+    """
+    profile = _require_learner(learner_id)
+    kg = get_knowledge_graph(profile.domain)
+    state = db.get_state(learner_id)
+    if concept_id not in kg.concept_ids():
+        raise HTTPException(404, "Unknown concept_id for this learner's domain")
+
+    prereq_ok = kg.prerequisites_satisfied(concept_id, state.mastery, MASTERY_THRESHOLD)
+    mastery = state.get(concept_id)
+    candidates = _resources_for_concept(concept_id)
+
+    resources_out = []
+    if candidates:
+        scored = score_resources(
+            resources=candidates,
+            gap_concept=concept_id,
+            concept_display_name=kg.name_of(concept_id),
+            available_minutes=profile.available_minutes_per_day,
+            prereq_ok=prereq_ok,
+            preferred_types=profile.preferred_types,
+            preferred_sources=profile.preferred_sources,
+            current_mastery=mastery,
+        )
+        for s in scored:
+            r: Resource = s["resource"]
+            resources_out.append({
+                "id": r.id, "title": r.title, "url": r.url, "type": r.type,
+                "source": r.source, "duration_min": r.duration_min,
+                "score": s["score"], "predicted_gain": s["predicted_gain"],
+            })
+
+    return {
+        "id": concept_id,
+        "name": kg.name_of(concept_id),
+        "mastery": mastery,
+        "mastered": mastery >= MASTERY_THRESHOLD,
+        "prerequisites_satisfied": prereq_ok,
+        "direct_prerequisites": [
+            {"id": p, "name": kg.name_of(p), "mastery": state.get(p)}
+            for p in kg.direct_prerequisites(concept_id)
+        ],
+        "resources": resources_out,
+    }
+
+
 @app.get("/learners/{learner_id}/plan", response_model=DailyPlan)
 def get_daily_plan(learner_id: str):
     profile = _require_learner(learner_id)
@@ -202,6 +268,7 @@ def get_daily_plan(learner_id: str):
             prereq_ok=True,
             preferred_types=profile.preferred_types,
             preferred_sources=profile.preferred_sources,
+            current_mastery=state.get(concept_id),
             weights=weights,
         )
         groups.append(scored[:3])
@@ -211,10 +278,12 @@ def get_daily_plan(learner_id: str):
     items = []
     for sel in selected:
         r: Resource = sel["resource"]
+        gain_pct = round(max(0.0, sel["predicted_gain"]) * 100)
         reason = (
             f"Your diagnostic shows {kg.name_of(r.concept)} mastery of "
             f"{state.get(r.concept):.2f} (below the {MASTERY_THRESHOLD} threshold), "
             f"and it sits on the prerequisite path to {kg.name_of(profile.goal_concept)}. "
+            f"Our local neural network predicts about a {gain_pct} point mastery gain from this resource. "
             f"Recommended using your '{chosen_arm.replace('_', ' ')}' personalization profile."
         )
         items.append(PlanItem(resource=r, reason=reason))

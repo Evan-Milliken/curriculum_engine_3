@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Pathfinder — Curriculum Engine</title>
+<title>Pathfinder: Curriculum Engine</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,7 +62,9 @@
 
   .stat-pill { display: flex; align-items: center; gap: 8px; }
   .stat-chip { display: flex; align-items: center; gap: 5px; padding: 6px 12px; border-radius: 20px;
-    font-weight: 800; font-size: 0.85rem; font-family: var(--font-head); }
+    font-weight: 800; font-size: 0.85rem; font-family: var(--font-head); border: none; cursor: pointer;
+    transition: transform .08s ease; }
+  .stat-chip:active { transform: scale(0.94); }
   .stat-chip.streak { background: var(--red-light); color: var(--red-text); }
   .stat-chip.xp { background: var(--purple-light); color: var(--purple-text); }
   .stat-chip.level { background: var(--bg-soft); color: var(--ink-dim); }
@@ -154,9 +156,12 @@
     display: inline-block; margin: 0 auto 18px; padding: 10px 22px; border-radius: 14px;
     background: var(--purple); color: white; font-family: var(--font-head); font-weight: 800;
     font-size: 0.85rem; letter-spacing: 0.04em; box-shadow: 0 4px 0 var(--purple-dark);
-    text-align: center; text-transform: uppercase;
+    text-align: center; text-transform: uppercase; border: none; cursor: pointer;
+    transition: transform .08s ease;
   }
+  .unit-banner:active { transform: translateY(4px); box-shadow: none; }
   .unit-banner-wrap { display: flex; justify-content: center; }
+  .journey-svg-node { cursor: pointer; }
   .journey-label {
     position: absolute; background: var(--ink); color: white; padding: 10px 14px; border-radius: 12px;
     font-size: 0.82rem; font-weight: 700; pointer-events: none; opacity: 0;
@@ -185,6 +190,7 @@
   .stack-card .meta { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
   .badge { display: inline-block; background: var(--purple-light); color: var(--purple-text);
     padding: 4px 11px; border-radius: 20px; font-size: 0.72rem; font-weight: 800; }
+  .badge.ai { background: var(--red-light); color: var(--red-text); }
   .stack-card .reason { font-size: 0.85rem; color: var(--ink-dim); font-weight: 700; margin-bottom: 14px; line-height: 1.4; }
   .stack-card .card-actions { display: flex; gap: 10px; margin-top: auto; }
   .stack-card a.open-btn { flex: 1; text-align: center; padding: 12px; border-radius: 14px;
@@ -232,20 +238,56 @@
   .arm-bar-row .bar-track { flex: 1; height: 12px; background: var(--border); border-radius: 6px; overflow: hidden; }
   .arm-bar-row .bar-fill { height: 100%; background: var(--purple); }
   .arm-bar-row .count { width: 24px; text-align: right; color: var(--ink-dim); }
+
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(61,44,86,0.45); z-index: 200;
+    display: none; align-items: flex-end; justify-content: center;
+  }
+  .modal-overlay.show { display: flex; }
+  @media (min-width: 640px) { .modal-overlay { align-items: center; } }
+  .modal-card {
+    background: var(--white); width: 100%; max-width: 480px; max-height: 82vh; overflow-y: auto;
+    border-radius: 24px 24px 0 0; padding: 22px; box-shadow: 0 -8px 0 var(--border);
+    animation: slideUp .2s ease;
+  }
+  @media (min-width: 640px) { .modal-card { border-radius: 22px; box-shadow: 0 6px 0 var(--border); } }
+  @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: none; opacity: 1; } }
+  .modal-card .modal-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+  .modal-card h3 { margin: 0; font-size: 1.25rem; }
+  .modal-close { border: none; background: var(--bg-soft); color: var(--ink-dim); width: 34px; height: 34px;
+    border-radius: 50%; font-size: 1rem; font-weight: 800; cursor: pointer; flex-shrink: 0; }
+  .modal-mastery-row { display: flex; align-items: center; gap: 10px; margin: 12px 0 18px; }
+  .modal-mastery-bar { flex: 1; height: 12px; background: var(--border); border-radius: 6px; overflow: hidden; }
+  .modal-mastery-fill { height: 100%; background: var(--purple); }
+  .modal-mastery-fill.mastered { background: var(--purple); }
+  .modal-mastery-fill.locked { background: var(--red); }
+  .modal-section-title { font-weight: 800; font-size: 0.85rem; color: var(--ink-dim); text-transform: uppercase;
+    letter-spacing: 0.04em; margin: 16px 0 8px; }
+  .modal-prereq-chip { display: inline-flex; align-items: center; gap: 5px; padding: 6px 12px; border-radius: 12px;
+    background: var(--bg-soft); font-size: 0.8rem; font-weight: 700; margin: 3px 4px 3px 0; }
+  .modal-prereq-chip.ok::before { content: '\2713'; color: var(--purple); font-weight: 800; }
+  .modal-prereq-chip.blocked::before { content: '!'; color: var(--red); font-weight: 800; }
+  .modal-resource-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0;
+    border-bottom: 1px solid var(--border); gap: 10px; }
+  .modal-resource-row:last-child { border-bottom: none; }
+  .modal-resource-row .r-title { font-weight: 700; font-size: 0.9rem; }
+  .modal-resource-row .r-meta { font-size: 0.72rem; color: var(--ink-dim); font-weight: 700; }
+  .modal-resource-row a { flex-shrink: 0; padding: 8px 14px; border-radius: 10px; background: var(--purple);
+    color: white; text-decoration: none; font-size: 0.8rem; font-weight: 800; }
 </style>
 </head>
 <body>
 <header>
-  <div class="brand"><span class="logo">🧭</span> Pathfinder</div>
+  <div class="brand"><span class="logo">P</span> Pathfinder</div>
   <div class="tabs" id="tabs" style="display:none">
     <button data-view="home-view" class="active">Home</button>
     <button data-view="map-view">Map</button>
     <button data-view="analytics-view">Analytics</button>
   </div>
   <div class="stat-pill">
-    <span class="stat-chip streak">🔥 <span id="streak-count">0</span></span>
-    <span class="stat-chip xp">💎 <span id="xp-count">0</span></span>
-    <span class="stat-chip level">Lv<span id="level-count">1</span></span>
+    <button class="stat-chip streak" onclick="switchTab('analytics-view')">Streak <span id="streak-count">0</span></button>
+    <button class="stat-chip xp" onclick="switchTab('analytics-view')">XP <span id="xp-count">0</span></button>
+    <button class="stat-chip level" onclick="switchTab('analytics-view')">Lv<span id="level-count">1</span></button>
   </div>
 </header>
 
@@ -258,15 +300,13 @@
         <svg viewBox="0 0 300 160" fill="none">
           <path d="M10 130 Q 60 40, 120 90 T 230 60 T 290 100" stroke="#e7d6ff" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 16"/>
           <circle cx="10" cy="130" r="10" fill="#ff7a92"/>
-          <circle cx="150" cy="72" r="8" fill="#ffd166"/>
+          <circle cx="150" cy="72" r="8" fill="#c9b6ff"/>
           <circle cx="290" cy="100" r="13" fill="#9b6bff"/>
           <circle cx="290" cy="100" r="20" fill="none" stroke="#9b6bff" stroke-width="2" opacity="0.35"/>
-          <text x="290" y="78" text-anchor="middle" font-size="20">🏁</text>
-          <text x="10" y="112" text-anchor="middle" font-size="16">🚩</text>
         </svg>
       </div>
       <h2>Where do you want to go?</h2>
-      <p class="subtle">Pick a knowledge domain, a target concept, and your time budget — we'll map the path.</p>
+      <p class="subtle">Pick a knowledge domain, a target concept, and your time budget. We will map the path for you.</p>
 
       <label>Knowledge domain</label>
       <div class="domain-cards" id="domain-cards"></div>
@@ -278,7 +318,7 @@
       <input type="number" id="minutes" value="30" min="5" max="240">
       <label>Deadline (days)</label>
       <input type="number" id="deadline" value="14" min="1" max="365">
-      <button class="primary" onclick="createLearner()">Start Diagnostic →</button>
+      <button class="primary" onclick="createLearner()">Start Diagnostic</button>
       <div id="error"></div>
     </div>
 
@@ -286,17 +326,17 @@
       <div class="quiz-progress" id="quiz-progress"></div>
       <div id="quiz-stage"></div>
       <div class="quiz-nav">
-        <button class="back-btn" id="quiz-back-btn" onclick="quizBack()">←</button>
+        <button class="back-btn" id="quiz-back-btn" onclick="quizBack()">Back</button>
         <button class="primary" id="quiz-next-btn">Continue</button>
       </div>
     </div>
 
     <div id="plan-section" style="display:none">
       <h2>Your Journey</h2>
-      <p class="subtle" style="margin-bottom:14px">Tap a stop to see it, or head straight to today's plan below.</p>
+      <p class="subtle" style="margin-bottom:14px">Tap any stop for details and resources, or scroll to today's plan below.</p>
       <div class="journey-wrap" id="journey-wrap"></div>
 
-      <h2>Today's Plan</h2>
+      <h2 id="today-plan-heading">Today's Plan</h2>
       <div class="plan-summary">
         <div>
           <div style="font-weight:800; font-family:var(--font-head); color:var(--ink)" id="plan-minutes">0 / 0 min</div>
@@ -312,7 +352,7 @@
 
   <section id="map-view" class="view">
     <h2>Knowledge Graph</h2>
-    <p class="subtle">Every concept on the way to your goal — colored by mastery, laid out by prerequisite depth. Drag to pan, scroll to zoom.</p>
+    <p class="subtle">Every concept on the way to your goal, colored by mastery and laid out by prerequisite depth. Drag to pan, scroll to zoom, click any node for details.</p>
     <div class="legend">
       <span><i style="background:#e7ddf7"></i> Locked</span>
       <span><i style="background:var(--red)"></i> In progress</span>
@@ -324,7 +364,7 @@
 
   <section id="analytics-view" class="view">
     <h2>Personalization Analytics</h2>
-    <p class="subtle">The PC-BwK bandit layer working, made visible — see RESEARCH.md for what it's doing.</p>
+    <p class="subtle">The PC-BwK bandit and the local AI gain predictor, made visible. See RESEARCH.md for details.</p>
     <div class="panel">
       <h3>Mastery growth over time</h3>
       <p class="subtle">Average mastery across all touched concepts, per interaction.</p>
@@ -337,17 +377,22 @@
     </div>
     <div class="panel">
       <h3>Current scoring weights</h3>
-      <p class="subtle">The weight vector last chosen for this learner's situation.</p>
+      <p class="subtle">The weight vector last chosen for this learner's situation, including the AI predicted gain criterion.</p>
       <div class="chart-wrap"><canvas id="weights-chart" height="140"></canvas></div>
     </div>
   </section>
 
 </main>
+
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalIfBackground(event)">
+  <div class="modal-card" id="modal-card"></div>
+</div>
+
 <div class="xp-toast" id="xp-toast"></div>
 <div id="tooltip"></div>
 
 <script>
-const API_BASE = window.CURRICULUM_API_BASE || "http://localhost:8080";
+const API_BASE = window.CURRICULUM_API_BASE || "http://localhost:8000";
 const LEARNER_ID = "learner_" + Math.random().toString(36).slice(2, 10);
 let QUIZ_QUESTIONS = [];
 let SELF_ASSESS_CONCEPTS = [];
@@ -364,7 +409,7 @@ const Game = {
     this.xp += Math.round(amount * 100);
     this.level = 1 + Math.floor(this.xp / 500);
     this.render();
-    this.toast(`+${Math.round(amount * 100)} XP`);
+    this.toast("+" + Math.round(amount * 100) + " XP");
   },
   bumpStreak() { this.streak += 1; this.render(); },
   render() {
@@ -394,7 +439,7 @@ function switchTab(viewId) {
 document.querySelectorAll(".tabs button").forEach(b => b.addEventListener("click", () => switchTab(b.dataset.view)));
 
 function burstConfetti() {
-  const colors = ["#ff7a92", "#9b6bff", "#ffd166", "#ffffff"];
+  const colors = ["#ff7a92", "#9b6bff", "#c9b6ff", "#ffffff"];
   for (let i = 0; i < 26; i++) {
     const piece = document.createElement("div");
     piece.className = "confetti-piece";
@@ -406,22 +451,67 @@ function burstConfetti() {
     const dx = Math.cos(angle) * dist, dy = Math.sin(angle) * dist - 60;
     piece.animate([
       { transform: "translate(0,0) rotate(0deg)", opacity: 1 },
-      { transform: `translate(${dx}px, ${dy}px) rotate(${Math.random()*360}deg)`, opacity: 0 }
+      { transform: "translate(" + dx + "px, " + dy + "px) rotate(" + (Math.random()*360) + "deg)", opacity: 0 }
     ], { duration: 700 + Math.random() * 400, easing: "cubic-bezier(.2,.8,.2,1)" });
     setTimeout(() => piece.remove(), 1200);
   }
 }
 
+async function openConceptModal(conceptId) {
+  const overlay = document.getElementById("modal-overlay");
+  const card = document.getElementById("modal-card");
+  card.innerHTML = '<div class="empty-state">Loading</div>';
+  overlay.classList.add("show");
+  try {
+    const data = await (await fetch(API_BASE + "/learners/" + LEARNER_ID + "/concepts/" + conceptId)).json();
+    const pct = Math.round(data.mastery * 100);
+    const prereqHtml = data.direct_prerequisites.length
+      ? data.direct_prerequisites.map(p => {
+          const ok = p.mastery >= 0.6;
+          return '<span class="modal-prereq-chip ' + (ok ? 'ok' : 'blocked') + '">' + p.name + ' (' + Math.round(p.mastery*100) + '%)</span>';
+        }).join("")
+      : '<span class="subtle" style="margin:0">No prerequisites. This is a starting point.</span>';
+    const resourcesHtml = data.resources.length
+      ? data.resources.map(r => (
+          '<div class="modal-resource-row"><div><div class="r-title">' + r.title + '</div>' +
+          '<div class="r-meta">' + r.duration_min + ' min, ' + r.type + '. AI predicted gain: ' +
+          Math.round(Math.max(0,r.predicted_gain)*100) + ' points</div></div>' +
+          '<a href="' + r.url + '" target="_blank" rel="noopener">Open</a></div>'
+        )).join("")
+      : '<div class="empty-state">No resources indexed for this concept yet.</div>';
+
+    let statusLine;
+    if (data.mastered) {
+      statusLine = "You have mastered this concept.";
+    } else if (data.prerequisites_satisfied) {
+      statusLine = "Prerequisites are satisfied. This is ready to study now.";
+    } else {
+      statusLine = "Some prerequisites still need work before this unlocks.";
+    }
+
+    card.innerHTML =
+      '<div class="modal-top"><h3>' + data.name + '</h3><button class="modal-close" onclick="closeModal()">Close</button></div>' +
+      '<div class="modal-mastery-row"><div class="modal-mastery-bar"><div class="modal-mastery-fill ' + (data.mastered ? 'mastered' : '') + '" style="width:' + pct + '%"></div></div><strong>' + pct + '%</strong></div>' +
+      '<p class="subtle" style="margin:0 0 10px">' + statusLine + '</p>' +
+      '<div class="modal-section-title">Prerequisites</div><div>' + prereqHtml + '</div>' +
+      '<div class="modal-section-title">Resources</div><div>' + resourcesHtml + '</div>';
+  } catch (e) {
+    card.innerHTML = '<div class="modal-top"><h3>Could not load</h3><button class="modal-close" onclick="closeModal()">Close</button></div>' +
+      '<p class="subtle" style="margin:0">Something went wrong reaching the backend.</p>';
+  }
+}
+function closeModal() { document.getElementById("modal-overlay").classList.remove("show"); }
+function closeModalIfBackground(ev) { if (ev.target.id === "modal-overlay") closeModal(); }
+
 async function initDomains() {
-  const domains = await (await fetch(`${API_BASE}/domains`)).json();
+  const domains = await (await fetch(API_BASE + "/domains")).json();
   const container = document.getElementById("domain-cards");
-  container.innerHTML = domains.map(d => `
-    <div class="domain-card ${d.id === SELECTED_DOMAIN ? 'selected' : ''}" data-domain="${d.id}" onclick="selectDomain('${d.id}')">
-      <h3>${d.id === 'demo_ml' ? '🧪 Quick Demo' : '🎓 Full CS Curriculum'}</h3>
-      <p>${d.num_concepts} concepts · ${d.num_edges} links${d.has_quiz ? ' · MCQ quiz' : ' · self-check'}</p>
-      <span class="tag">${d.id === 'demo_ml' ? 'Demo graph' : 'Real dataset (AAAI 2019)'}</span>
-    </div>
-  `).join("");
+  container.innerHTML = domains.map(d => (
+    '<div class="domain-card ' + (d.id === SELECTED_DOMAIN ? 'selected' : '') + '" data-domain="' + d.id + '" onclick="selectDomain(\'' + d.id + '\')">' +
+    '<h3>' + (d.id === 'demo_ml' ? 'Quick Demo' : 'Full CS Curriculum') + '</h3>' +
+    '<p>' + d.num_concepts + ' concepts. ' + d.num_edges + ' links. ' + (d.has_quiz ? 'MCQ quiz' : 'Self-check') + '</p>' +
+    '<span class="tag">' + (d.id === 'demo_ml' ? 'Demo graph' : 'Real dataset (AAAI 2019)') + '</span></div>'
+  )).join("");
   await loadGoalOptions();
 }
 
@@ -432,12 +522,12 @@ async function selectDomain(domainId) {
 }
 
 async function loadGoalOptions() {
-  const graph = await (await fetch(`${API_BASE}/graph?domain=${SELECTED_DOMAIN}`)).json();
+  const graph = await (await fetch(API_BASE + "/graph?domain=" + SELECTED_DOMAIN)).json();
   const select = document.getElementById("goal_concept");
   const withPrereqs = graph.nodes.filter(n => graph.edges.some(e => e.target === n.id));
   const pool = SELECTED_DOMAIN === "demo_ml" ? graph.nodes : withPrereqs;
   const sorted = [...pool].sort((a, b) => a.name.localeCompare(b.name));
-  select.innerHTML = sorted.map(n => `<option value="${n.id}">${n.name}</option>`).join("");
+  select.innerHTML = sorted.map(n => '<option value="' + n.id + '">' + n.name + '</option>').join("");
   if (SELECTED_DOMAIN === "demo_ml") select.value = "neural_networks";
 }
 
@@ -453,7 +543,7 @@ async function createLearner() {
     preferred_types: [], preferred_sources: []
   };
   try {
-    const res = await fetch(`${API_BASE}/learners`, {
+    const res = await fetch(API_BASE + "/learners", {
       method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body)
     });
     if (!res.ok) throw new Error(await res.text());
@@ -461,7 +551,7 @@ async function createLearner() {
     document.getElementById("quiz-section").style.display = "block";
     document.getElementById("tabs").style.display = "flex";
 
-    const quiz = await (await fetch(`${API_BASE}/quiz?domain=${SELECTED_DOMAIN}`)).json();
+    const quiz = await (await fetch(API_BASE + "/quiz?domain=" + SELECTED_DOMAIN)).json();
     if (quiz.length > 0) {
       quizMode = "mcq";
       QUIZ_QUESTIONS = quiz;
@@ -470,14 +560,14 @@ async function createLearner() {
       renderMcqStep();
     } else {
       quizMode = "assess";
-      const gaps = await (await fetch(`${API_BASE}/learners/${LEARNER_ID}/gaps`)).json();
+      const gaps = await (await fetch(API_BASE + "/learners/" + LEARNER_ID + "/gaps")).json();
       SELF_ASSESS_CONCEPTS = gaps.gaps.slice(0, 8);
       quizStep = 0;
       renderQuizProgress();
       renderAssessStep();
     }
   } catch (e) {
-    showError("Couldn't reach the backend at " + API_BASE + ". (" + e.message + ")");
+    showError("Could not reach the backend at " + API_BASE + ". (" + e.message + ")");
   }
 }
 
@@ -485,7 +575,7 @@ function renderQuizProgress() {
   const total = quizMode === "mcq" ? QUIZ_QUESTIONS.length : SELF_ASSESS_CONCEPTS.length;
   const wrap = document.getElementById("quiz-progress");
   wrap.innerHTML = Array.from({length: total}, (_, i) =>
-    `<div class="dot ${i < quizStep ? 'done' : i === quizStep ? 'current' : ''}"></div>`
+    '<div class="dot ' + (i < quizStep ? 'done' : i === quizStep ? 'current' : '') + '"></div>'
   ).join("");
   document.getElementById("quiz-back-btn").style.visibility = quizStep === 0 ? "hidden" : "visible";
 }
@@ -493,24 +583,19 @@ function renderQuizProgress() {
 function renderMcqStep() {
   const q = QUIZ_QUESTIONS[quizStep];
   const stage = document.getElementById("quiz-stage");
-  stage.innerHTML = `
-    <div class="quiz-card">
-      <div class="kicker">Question ${quizStep + 1} of ${QUIZ_QUESTIONS.length}</div>
-      <p class="prompt">${q.prompt}</p>
-      ${q.options.map(opt => `
-        <label class="option" data-q="${q.id}">
-          <input type="radio" name="${q.id}" value="${opt}" onchange="highlightOption(this)"> ${opt}
-        </label>
-      `).join("")}
-    </div>
-  `;
+  stage.innerHTML =
+    '<div class="quiz-card"><div class="kicker">Question ' + (quizStep + 1) + ' of ' + QUIZ_QUESTIONS.length + '</div>' +
+    '<p class="prompt">' + q.prompt + '</p>' +
+    q.options.map(opt => (
+      '<label class="option" data-q="' + q.id + '"><input type="radio" name="' + q.id + '" value="' + opt + '" onchange="highlightOption(this)"> ' + opt + '</label>'
+    )).join("") + '</div>';
   const nextBtn = document.getElementById("quiz-next-btn");
-  nextBtn.textContent = quizStep === QUIZ_QUESTIONS.length - 1 ? "Reveal My Path →" : "Continue";
+  nextBtn.textContent = quizStep === QUIZ_QUESTIONS.length - 1 ? "Reveal My Path" : "Continue";
   nextBtn.disabled = true;
   nextBtn.onclick = mcqNext;
 }
 function highlightOption(input) {
-  document.querySelectorAll(`.option[data-q="${input.name}"]`).forEach(o => o.classList.remove("selected"));
+  document.querySelectorAll('.option[data-q="' + input.name + '"]').forEach(o => o.classList.remove("selected"));
   input.closest(".option").classList.add("selected");
   document.getElementById("quiz-next-btn").disabled = false;
 }
@@ -522,10 +607,10 @@ async function mcqNext() {
   } else {
     showError("");
     const answers = QUIZ_QUESTIONS.map(q => {
-      const checked = document.querySelector(`input[name="${q.id}"]:checked`);
+      const checked = document.querySelector('input[name="' + q.id + '"]:checked');
       return checked ? { question_id: q.id, selected_option: checked.value } : null;
     }).filter(Boolean);
-    await fetch(`${API_BASE}/quiz/submit`, {
+    await fetch(API_BASE + "/quiz/submit", {
       method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ learner_id: LEARNER_ID, answers })
     });
@@ -536,18 +621,13 @@ async function mcqNext() {
 function renderAssessStep() {
   const c = SELF_ASSESS_CONCEPTS[quizStep];
   const stage = document.getElementById("quiz-stage");
-  stage.innerHTML = `
-    <div class="assess-card" data-concept="${c.id}">
-      <div class="kicker">Concept ${quizStep + 1} of ${SELF_ASSESS_CONCEPTS.length}</div>
-      <p class="prompt">How familiar are you with<br>"${c.name}"?</p>
-      <div class="familiarity-row">
-        ${[0,1,2,3,4,5].map(v => `<button data-v="${v}" onclick="setFamiliarity(this)">${v}</button>`).join("")}
-      </div>
-      <div class="familiarity-caption"><span>Never heard of it</span><span>Could teach it</span></div>
-    </div>
-  `;
+  stage.innerHTML =
+    '<div class="assess-card" data-concept="' + c.id + '"><div class="kicker">Concept ' + (quizStep + 1) + ' of ' + SELF_ASSESS_CONCEPTS.length + '</div>' +
+    '<p class="prompt">How familiar are you with "' + c.name + '"?</p>' +
+    '<div class="familiarity-row">' + [0,1,2,3,4,5].map(v => '<button data-v="' + v + '" onclick="setFamiliarity(this)">' + v + '</button>').join("") + '</div>' +
+    '<div class="familiarity-caption"><span>Never heard of it</span><span>Could teach it</span></div></div>';
   document.getElementById("quiz-next-btn").textContent =
-    quizStep === SELF_ASSESS_CONCEPTS.length - 1 ? "Reveal My Path →" : "Continue";
+    quizStep === SELF_ASSESS_CONCEPTS.length - 1 ? "Reveal My Path" : "Continue";
   document.getElementById("quiz-next-btn").disabled = true;
   document.getElementById("quiz-next-btn").onclick = assessNext;
 }
@@ -561,7 +641,7 @@ async function assessNext() {
   const concept = block.dataset.concept;
   const selected = block.querySelector(".familiarity-row button.selected");
   const familiarity = selected ? parseInt(selected.dataset.v, 10) : 0;
-  await fetch(`${API_BASE}/learners/${LEARNER_ID}/self_assess?concept=${concept}&familiarity=${familiarity}`, { method: "POST" });
+  await fetch(API_BASE + "/learners/" + LEARNER_ID + "/self_assess?concept=" + concept + "&familiarity=" + familiarity, { method: "POST" });
 
   if (quizStep < SELF_ASSESS_CONCEPTS.length - 1) {
     quizStep++;
@@ -586,17 +666,21 @@ async function enterPlanView() {
 
 async function loadGapsAndPlan() {
   const [gapsRes, planRes] = await Promise.all([
-    fetch(`${API_BASE}/learners/${LEARNER_ID}/gaps`),
-    fetch(`${API_BASE}/learners/${LEARNER_ID}/plan`)
+    fetch(API_BASE + "/learners/" + LEARNER_ID + "/gaps"),
+    fetch(API_BASE + "/learners/" + LEARNER_ID + "/plan")
   ]);
   renderJourney(await gapsRes.json());
   renderPlan(await planRes.json());
 }
 
+function scrollToPlan() {
+  document.getElementById("today-plan-heading").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 function renderJourney(gaps) {
   const wrap = document.getElementById("journey-wrap");
   if (!gaps.gaps || gaps.gaps.length === 0) {
-    wrap.innerHTML = `<div class="empty-state">🎉 No gaps left toward <strong>${gaps.goal || GOAL_CONCEPT}</strong> — you're there!</div>`;
+    wrap.innerHTML = '<div class="empty-state">No gaps left toward <strong>' + (gaps.goal || GOAL_CONCEPT) + '</strong>. You are there.</div>';
     return;
   }
   const nodes = gaps.gaps.slice(0, 8);
@@ -606,14 +690,12 @@ function renderJourney(gaps) {
   const height = nodes.length * stepY + bannerSpace + 20;
   const xPattern = [0.5, 0.72, 0.5, 0.28, 0.5, 0.72, 0.5, 0.28];
 
-  const points = nodes.map((n, i) => ({
-    ...n, x: width * xPattern[i % xPattern.length], y: bannerSpace + i * stepY
-  }));
+  const points = nodes.map((n, i) => Object.assign({}, n, { x: width * xPattern[i % xPattern.length], y: bannerSpace + i * stepY }));
 
-  let pathD = `M ${points[0].x} ${points[0].y}`;
+  let pathD = "M " + points[0].x + " " + points[0].y;
   for (let i = 1; i < points.length; i++) {
     const midY = (points[i-1].y + points[i].y) / 2;
-    pathD += ` C ${points[i-1].x} ${midY}, ${points[i].x} ${midY}, ${points[i].x} ${points[i].y}`;
+    pathD += " C " + points[i-1].x + " " + midY + ", " + points[i].x + " " + midY + ", " + points[i].x + " " + points[i].y;
   }
 
   const nodesHtml = points.map((n, i) => {
@@ -621,35 +703,30 @@ function renderJourney(gaps) {
     const current = !mastered && i === 0;
     const fill = mastered ? "#9b6bff" : current ? "#ff7a92" : "#efe6ff";
     const shadow = mastered ? "#7c4fe0" : current ? "#e85b76" : "#ded0f5";
-    const icon = mastered ? "✓" : current ? "★" : (i + 1);
+    const icon = mastered ? "OK" : current ? "GO" : String(i + 1);
     const textColor = mastered || current ? "#ffffff" : "#8d7fab";
-    const glow = current ? `<circle cx="${n.x}" cy="${n.y}" r="27" fill="none" stroke="#ff7a92" stroke-width="2" opacity="0.4"><animate attributeName="r" values="21;31;21" dur="1.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.5;0.1;0.5" dur="1.8s" repeatCount="indefinite"/></circle>` : "";
-    return `
-      ${glow}
-      <g class="journey-svg-node" transform="translate(${n.x},${n.y})" onmouseenter="showJourneyLabel(event,'${n.name.replace(/'/g,"\\'")}', ${(n.mastery*100).toFixed(0)})" onmouseleave="hideJourneyLabel()">
-        <circle r="21" fill="${shadow}" transform="translate(0,4)"/>
-        <circle r="21" fill="${fill}" stroke="#ffffff" stroke-width="2.5"/>
-        <text text-anchor="middle" dy="6" font-size="15" font-weight="800" fill="${textColor}">${icon}</text>
-      </g>
-      <text x="${n.x + (n.x > width/2 ? -32 : 32)}" y="${n.y + 5}" font-size="11.5" font-weight="700" fill="#8d7fab"
-        text-anchor="${n.x > width/2 ? 'end' : 'start'}">${n.name.length > 20 ? n.name.slice(0,19)+'…' : n.name}</text>
-    `;
+    const glow = current ? ('<circle cx="' + n.x + '" cy="' + n.y + '" r="27" fill="none" stroke="#ff7a92" stroke-width="2" opacity="0.4"><animate attributeName="r" values="21;31;21" dur="1.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.5;0.1;0.5" dur="1.8s" repeatCount="indefinite"/></circle>') : "";
+    const label = n.name.length > 20 ? n.name.slice(0,19) + "." : n.name;
+    return glow +
+      '<g class="journey-svg-node" transform="translate(' + n.x + ',' + n.y + ')" onclick="openConceptModal(\'' + n.id + '\')" onmouseenter="showJourneyLabel(event,\'' + n.name.replace(/'/g,"\\'") + '\', ' + (n.mastery*100).toFixed(0) + ')" onmouseleave="hideJourneyLabel()">' +
+      '<circle r="21" fill="' + shadow + '" transform="translate(0,4)"/>' +
+      '<circle r="21" fill="' + fill + '" stroke="#ffffff" stroke-width="2.5"/>' +
+      '<text text-anchor="middle" dy="5" font-size="11" font-weight="800" fill="' + textColor + '">' + icon + '</text></g>' +
+      '<text x="' + (n.x + (n.x > width/2 ? -32 : 32)) + '" y="' + (n.y + 5) + '" font-size="11.5" font-weight="700" fill="#8d7fab" text-anchor="' + (n.x > width/2 ? 'end' : 'start') + '" style="cursor:pointer" onclick="openConceptModal(\'' + n.id + '\')">' + label + '</text>';
   }).join("");
 
-  wrap.innerHTML = `
-    <div class="unit-banner-wrap"><div class="unit-banner">🏆 Next Up</div></div>
-    <svg viewBox="0 0 ${width} ${height}" width="100%" height="${height}">
-      <path d="${pathD}" stroke="#efe0ff" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="1 16"/>
-      ${nodesHtml}
-    </svg>
-    ${gaps.gaps.length > 8 ? `<div class="subtle" style="text-align:center">+ ${gaps.gaps.length - 8} more concepts further down the path — see the Map tab.</div>` : ""}
-    <div id="journey-tooltip" class="journey-label"></div>
-  `;
+  wrap.innerHTML =
+    '<div class="unit-banner-wrap"><button class="unit-banner" onclick="scrollToPlan()">Next up. Jump to today\'s plan</button></div>' +
+    '<svg viewBox="0 0 ' + width + ' ' + height + '" width="100%" height="' + height + '">' +
+    '<path d="' + pathD + '" stroke="#efe0ff" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="1 16"/>' +
+    nodesHtml + '</svg>' +
+    (gaps.gaps.length > 8 ? '<div class="subtle" style="text-align:center">Plus ' + (gaps.gaps.length - 8) + ' more concepts further down the path. See the Map tab.</div>' : "") +
+    '<div id="journey-tooltip" class="journey-label"></div>';
 }
 function showJourneyLabel(ev, name, masteryPct) {
   const tip = document.getElementById("journey-tooltip");
   if (!tip) return;
-  tip.innerHTML = `<strong>${name}</strong><br>mastery: ${masteryPct}%`;
+  tip.innerHTML = "<strong>" + name + "</strong><br>mastery: " + masteryPct + "%";
   tip.style.left = (ev.pageX + 10) + "px";
   tip.style.top = (ev.pageY - 40) + "px";
   tip.style.opacity = 1;
@@ -660,8 +737,7 @@ function hideJourneyLabel() {
 }
 
 function renderPlan(plan) {
-  document.getElementById("plan-minutes").textContent =
-    `${plan.total_minutes} / ${plan.total_minutes + plan.remaining_minutes} min`;
+  document.getElementById("plan-minutes").textContent = plan.total_minutes + " / " + (plan.total_minutes + plan.remaining_minutes) + " min";
   const pct = plan.total_minutes + plan.remaining_minutes > 0
     ? Math.round(100 * plan.total_minutes / (plan.total_minutes + plan.remaining_minutes)) : 0;
   const ring = document.getElementById("plan-ring");
@@ -670,42 +746,33 @@ function renderPlan(plan) {
 
   const stackEl = document.getElementById("card-stack");
   if (!plan.items || plan.items.length === 0) {
-    stackEl.innerHTML = `<div class="empty-state">No resources fit today's time budget for your current gaps — try raising your daily minutes.</div>`;
+    stackEl.innerHTML = '<div class="empty-state">No resources fit today\'s time budget for your current gaps. Try raising your daily minutes.</div>';
     return;
   }
-  planItemsQueue = [...plan.items];
+  planItemsQueue = plan.items.slice();
   renderCardStack();
 }
 
 function renderCardStack() {
   const stackEl = document.getElementById("card-stack");
   if (planItemsQueue.length === 0) {
-    stackEl.innerHTML = `
-      <div class="completion-banner">
-        <div class="big-emoji">🎉</div>
-        <h3 style="margin:0 0 6px">Today's plan complete!</h3>
-        <p class="subtle" style="margin:0">Come back tomorrow for your next stop on the journey.</p>
-      </div>`;
+    stackEl.innerHTML =
+      '<div class="completion-banner"><h3 style="margin:0 0 6px">Today\'s plan complete.</h3>' +
+      '<p class="subtle" style="margin:0">Come back tomorrow for your next stop on the journey.</p></div>';
     return;
   }
   const visible = planItemsQueue.slice(0, 2);
-  stackEl.innerHTML = visible.map((item, i) => `
-    <div class="stack-card" id="card-${item.resource.id}" style="z-index:${10-i}; transform: scale(${1 - i*0.04}) translateY(${i*10}px); opacity:${i===0?1:0.6}">
-      ${i === 0 ? `<div class="swipe-flag left" data-flag="skip">SKIP</div><div class="swipe-flag right" data-flag="done">DONE</div>` : ""}
-      <h3>${item.resource.title}</h3>
-      <div class="meta">
-        <span class="badge">⏱ ${item.resource.duration_min} min</span>
-        <span class="badge">${item.resource.type}</span>
-        <span class="badge">${item.resource.source}</span>
-      </div>
-      <div class="reason">${item.reason}</div>
-      <div class="card-actions">
-        <a class="open-btn" href="${item.resource.url}" target="_blank" rel="noopener">Open resource</a>
-        <button class="done-btn" onclick="markDone('${item.resource.id}')">Mark done ✓</button>
-      </div>
-      ${i === 0 ? `<div class="swipe-hint">swipe right when done, left to skip for now</div>` : ""}
-    </div>
-  `).join("");
+  stackEl.innerHTML = visible.map((item, i) => (
+    '<div class="stack-card" id="card-' + item.resource.id + '" style="z-index:' + (10-i) + '; transform: scale(' + (1 - i*0.04) + ') translateY(' + (i*10) + 'px); opacity:' + (i===0?1:0.6) + '">' +
+    (i === 0 ? '<div class="swipe-flag left" data-flag="skip">SKIP</div><div class="swipe-flag right" data-flag="done">DONE</div>' : "") +
+    '<h3>' + item.resource.title + '</h3>' +
+    '<div class="meta"><span class="badge">' + item.resource.duration_min + ' min</span><span class="badge">' + item.resource.type + '</span><span class="badge ai">AI recommended</span></div>' +
+    '<div class="reason">' + item.reason + '</div>' +
+    '<div class="card-actions"><a class="open-btn" href="' + item.resource.url + '" target="_blank" rel="noopener">Open resource</a>' +
+    '<button class="done-btn" onclick="markDone(\'' + item.resource.id + '\')">Mark done</button></div>' +
+    (i === 0 ? '<div class="swipe-hint">swipe right when done, left to skip for now</div>' : "") +
+    '</div>'
+  )).join("");
 
   const topCard = stackEl.querySelector(".stack-card");
   if (topCard) attachSwipe(topCard);
@@ -722,7 +789,7 @@ function attachSwipe(card) {
     dx = x - startX;
     const dy = y - startY;
     if (Math.abs(dy) > Math.abs(dx) * 1.5) return;
-    card.style.transform = `translateX(${dx}px) rotate(${dx / 20}deg)`;
+    card.style.transform = "translateX(" + dx + "px) rotate(" + (dx / 20) + "deg)";
     if (rightFlag) rightFlag.style.opacity = Math.max(0, Math.min(1, dx / 90));
     if (leftFlag) leftFlag.style.opacity = Math.max(0, Math.min(1, -dx / 90));
   }
@@ -731,11 +798,11 @@ function attachSwipe(card) {
     dragging = false;
     card.style.transition = "transform .25s ease";
     if (dx > 100) {
-      card.style.transform = `translateX(600px) rotate(20deg)`;
+      card.style.transform = "translateX(600px) rotate(20deg)";
       const resourceId = card.id.replace("card-", "");
       setTimeout(() => markDone(resourceId, true), 180);
     } else if (dx < -100) {
-      card.style.transform = `translateX(-600px) rotate(-20deg)`;
+      card.style.transform = "translateX(-600px) rotate(-20deg)";
       setTimeout(() => { planItemsQueue.shift(); renderCardStack(); }, 180);
     } else {
       card.style.transform = "translateX(0) rotate(0)";
@@ -755,18 +822,18 @@ async function markDone(resourceId, fromSwipe) {
   const performance = 0.85;
   try {
     const res = await fetch(
-      `${API_BASE}/learners/${LEARNER_ID}/complete?resource_id=${resourceId}&performance=${performance}`,
+      API_BASE + "/learners/" + LEARNER_ID + "/complete?resource_id=" + resourceId + "&performance=" + performance,
       { method: "POST" }
     );
     const data = await res.json();
-    Game.addXp(data.mastery_gain ?? 0.1);
+    Game.addXp(data.mastery_gain != null ? data.mastery_gain : 0.1);
     Game.bumpStreak();
     burstConfetti();
     planItemsQueue = planItemsQueue.filter(it => it.resource.id !== resourceId);
     renderCardStack();
     setTimeout(loadGapsAndPlan, 900);
   } catch (e) {
-    showError("Couldn't mark resource complete: " + e.message);
+    showError("Could not mark resource complete: " + e.message);
   }
 }
 
@@ -775,19 +842,19 @@ async function loadKnowledgeMap() {
   wrap.innerHTML = "";
   let data;
   try {
-    data = await (await fetch(`${API_BASE}/learners/${LEARNER_ID}/graph`)).json();
+    data = await (await fetch(API_BASE + "/learners/" + LEARNER_ID + "/graph")).json();
   } catch (e) {
-    wrap.innerHTML = `<div class="empty-state">Complete onboarding on the Home tab first.</div>`;
+    wrap.innerHTML = '<div class="empty-state">Complete onboarding on the Home tab first.</div>';
     return;
   }
 
   const width = wrap.clientWidth || 600;
   const byDepth = {};
-  data.nodes.forEach(n => { (byDepth[n.depth] ??= []).push(n); });
-  const maxDepth = Math.max(...data.nodes.map(n => n.depth));
+  data.nodes.forEach(n => { (byDepth[n.depth] = byDepth[n.depth] || []).push(n); });
+  const maxDepth = Math.max.apply(null, data.nodes.map(n => n.depth));
   const colWidth = Math.max(90, width / (maxDepth + 1.4));
   const rowHeight = 46;
-  const height = Math.max(320, Math.max(...Object.values(byDepth).map(a => a.length)) * rowHeight + 40);
+  const height = Math.max(320, Math.max.apply(null, Object.values(byDepth).map(a => a.length)) * rowHeight + 40);
 
   Object.values(byDepth).forEach(arr => arr.sort((a, b) => a.name.localeCompare(b.name)));
   const pos = {};
@@ -798,7 +865,7 @@ async function loadKnowledgeMap() {
   });
 
   const svg = d3.select(wrap).append("svg")
-    .attr("width", "100%").attr("viewBox", `0 0 ${Math.max(width, 50 + (maxDepth + 1) * colWidth)} ${height}`);
+    .attr("width", "100%").attr("viewBox", "0 0 " + Math.max(width, 50 + (maxDepth + 1) * colWidth) + " " + height);
   const g = svg.append("g");
   svg.call(d3.zoom().scaleExtent([0.3, 3]).on("zoom", (ev) => g.attr("transform", ev.transform)));
 
@@ -811,11 +878,13 @@ async function loadKnowledgeMap() {
   const tooltip = d3.select("#tooltip");
   const node = g.selectAll("g.node").data(data.nodes).enter().append("g")
     .attr("class", "node")
-    .attr("transform", d => `translate(${pos[d.id].x},${pos[d.id].y})`)
+    .attr("transform", d => "translate(" + pos[d.id].x + "," + pos[d.id].y + ")")
+    .style("cursor", "pointer")
+    .on("click", (ev, d) => openConceptModal(d.id))
     .on("mousemove", (ev, d) => {
       tooltip.style("opacity", 1)
         .style("left", (ev.pageX + 12) + "px").style("top", (ev.pageY - 10) + "px")
-        .html(`<strong>${d.name}</strong><br>mastery: ${(d.mastery * 100).toFixed(0)}%`);
+        .html("<strong>" + d.name + "</strong><br>mastery: " + (d.mastery * 100).toFixed(0) + "%");
     })
     .on("mouseleave", () => tooltip.style("opacity", 0));
 
@@ -827,7 +896,7 @@ async function loadKnowledgeMap() {
     .attr("stroke", "#ffffff").attr("stroke-width", 1.5);
 
   node.append("text")
-    .text(d => d.name.length > 16 ? d.name.slice(0, 15) + "…" : d.name)
+    .text(d => d.name.length > 16 ? d.name.slice(0, 15) + "." : d.name)
     .attr("x", 11).attr("y", 4)
     .attr("fill", "#3d2c56").attr("font-size", "9.5px").attr("font-weight", "700");
 }
@@ -835,11 +904,11 @@ async function loadKnowledgeMap() {
 async function loadAnalytics() {
   let data;
   try {
-    data = await (await fetch(`${API_BASE}/learners/${LEARNER_ID}/analytics`)).json();
+    data = await (await fetch(API_BASE + "/learners/" + LEARNER_ID + "/analytics")).json();
   } catch (e) { return; }
 
   const history = data.mastery_history || [];
-  const labels = history.map((h, i) => `#${i + 1}`);
+  const labels = history.map((h, i) => "#" + (i + 1));
   const values = history.map(h => h.mastery);
 
   const mctx = document.getElementById("mastery-chart");
@@ -855,15 +924,14 @@ async function loadAnalytics() {
 
   const pulls = data.bandit_summary.pulls_per_arm || {};
   const maxPulls = Math.max(1, ...Object.values(pulls));
-  document.getElementById("arm-bars").innerHTML = Object.entries(pulls).map(([arm, count]) => `
-    <div class="arm-bar-row">
-      <div class="label">${arm.replace(/_/g, " ")}</div>
-      <div class="bar-track"><div class="bar-fill" style="width:${(count / maxPulls) * 100}%"></div></div>
-      <div class="count">${count}</div>
-    </div>
-  `).join("") || `<div class="empty-state">No completions yet — mark a resource done on the Home tab.</div>`;
+  document.getElementById("arm-bars").innerHTML = Object.entries(pulls).map(([arm, count]) => (
+    '<div class="arm-bar-row"><div class="label">' + arm.replace(/_/g, " ") + '</div>' +
+    '<div class="bar-track"><div class="bar-fill" style="width:' + ((count / maxPulls) * 100) + '%"></div></div>' +
+    '<div class="count">' + count + '</div></div>'
+  )).join("") || '<div class="empty-state">No completions yet. Mark a resource done on the Home tab.</div>';
 
-  const latestWeights = (data.weight_log || []).slice(-1)[0]?.weights || {};
+  const weightLog = data.weight_log || [];
+  const latestWeights = weightLog.length ? weightLog[weightLog.length - 1].weights : {};
   const wctx = document.getElementById("weights-chart");
   if (weightsChart) weightsChart.destroy();
   weightsChart = new Chart(wctx, {

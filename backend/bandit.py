@@ -42,21 +42,28 @@ from __future__ import annotations
 import numpy as np
 
 # Each "arm" is a full weight vector emphasizing one criterion. This is a
-# small, interpretable discrete action space (5 arms) rather than a
-# continuous one — appropriate for the very small number of interactions
+# small, interpretable discrete action space (6 arms) rather than a
+# continuous one -- appropriate for the very small number of interactions
 # a single learner will generate in a course-timeline deployment; a
 # continuous LinUCB over weight-space would be more powerful but needs
 # far more interaction data per learner to converge than this project
-# will realistically collect (Action Item — see NOVELTY.md).
+# will realistically collect (Action Item -- see RESEARCH.md).
+#
+# "gain_heavy" trusts the trained neural network's predicted mastery gain
+# (backend/ml/predictor.py) above the other hand-authored criteria -- this
+# is the arm the bandit converges toward for learners where the NN's
+# nonlinear difficulty-matching turns out to predict real outcomes better
+# than the linear relevance/quality/time-fit heuristics.
 ARMS = {
-    "relevance_heavy":  np.array([0.6, 0.1, 0.1, 0.1, 0.1]),
-    "quality_heavy":    np.array([0.1, 0.6, 0.1, 0.1, 0.1]),
-    "time_fit_heavy":   np.array([0.1, 0.1, 0.6, 0.1, 0.1]),
-    "prereq_fit_heavy": np.array([0.1, 0.1, 0.1, 0.6, 0.1]),
-    "balanced":         np.array([0.2, 0.2, 0.2, 0.2, 0.2]),
+    "relevance_heavy":  np.array([0.45, 0.10, 0.10, 0.10, 0.10, 0.15]),
+    "quality_heavy":    np.array([0.10, 0.45, 0.10, 0.10, 0.10, 0.15]),
+    "time_fit_heavy":   np.array([0.10, 0.10, 0.45, 0.10, 0.10, 0.15]),
+    "prereq_fit_heavy": np.array([0.10, 0.10, 0.10, 0.45, 0.10, 0.15]),
+    "gain_heavy":       np.array([0.10, 0.10, 0.10, 0.10, 0.10, 0.50]),
+    "balanced":         np.array([1/6, 1/6, 1/6, 1/6, 1/6, 1/6]),
 }
 ARM_NAMES = list(ARMS.keys())
-CRITERIA_ORDER = ["relevance", "quality", "time_fit", "prereq_fit", "preference"]
+CRITERIA_ORDER = ["relevance", "quality", "time_fit", "prereq_fit", "preference", "predicted_gain"]
 CONTEXT_DIM = 4  # [current_mastery, deadline_pressure, minutes_available_norm, bias]
 
 

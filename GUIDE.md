@@ -1,16 +1,16 @@
-# GUIDE.md — From Zero to Google Play
+# GUIDE.md: From Zero to Google Play
 
 One guide, start to finish. If you've already done part of this (you
-mentioned finishing through running it locally), skip ahead — each part
+mentioned finishing through running it locally), skip ahead, each part
 says what to check before moving on.
 
 ---
 
-## Part 0 — What you're building
+## Part 0, What you're building
 
-Two programs: a **backend** (Python/FastAPI — the knowledge graph,
+Two programs: a **backend** (Python/FastAPI, the knowledge graph,
 scoring, bandit, and now a real SQLite database) and a **frontend** (one
-HTML file — what the learner sees and taps). The frontend talks to the
+HTML file, what the learner sees and taps). The frontend talks to the
 backend over HTTP. Getting this onto Google Play means: (1) host the
 backend somewhere with a public address, (2) host the frontend somewhere
 with a public address, (3) wrap the frontend as an Android app. Three
@@ -18,12 +18,12 @@ deployments, done in order.
 
 ---
 
-## Part 1 — Install the tools (one-time)
+## Part 1, Install the tools (one-time)
 
 ### Python
-**Mac:** `python3 --version` in Terminal — need 3.10+. If missing, install
+**Mac:** `python3 --version` in Terminal, need 3.10+. If missing, install
 from https://www.python.org/downloads/.
-**Windows:** install from https://www.python.org/downloads/ — **check
+**Windows:** install from https://www.python.org/downloads/, **check
 "Add python.exe to PATH"** on the first install screen, this is the most
 common thing people miss. Then `python --version` in Command Prompt.
 
@@ -41,7 +41,7 @@ GitHub: https://github.com/signup. VS Code: https://code.visualstudio.com/.
 
 ---
 
-## Part 2 — Get the project under Git
+## Part 2, Get the project under Git
 
 From inside your project folder (VS Code: File -> Open Folder, then View -> Terminal):
 ```bash
@@ -59,7 +59,7 @@ git push -u origin main
 
 ---
 
-## Part 3 — Run the backend locally
+## Part 3, Run the backend locally
 
 ```bash
 cd backend
@@ -75,7 +75,7 @@ bandit state persistently. Delete it any time to reset all data.
 
 ---
 
-## Part 4 — Run the frontend locally
+## Part 4, Run the frontend locally
 
 Second terminal:
 ```bash
@@ -93,7 +93,7 @@ they're actually present in your local `frontend/` folder.
 
 ---
 
-## Part 5 — Understand the file layout
+## Part 5, Understand the file layout
 
 ```
 curriculum-engine/
@@ -107,6 +107,7 @@ curriculum-engine/
 │   ├── optimizer.py         <- the knapsack that builds the daily plan
 │   ├── bandit.py            <- the PC-BwK personalization layer (the novelty)
 │   ├── ingestion.py         <- pulls real YouTube video metadata (needs your own API key)
+│   ├── ml/                   <- the local neural network (trained, no API key, ever)
 │   ├── baselines/           <- the Q-learning vs. PC-BwK comparison experiment
 │   ├── scripts/              <- dataset build/maintenance scripts
 │   └── data/                 <- concept graphs, resources, the SQLite db file
@@ -122,7 +123,7 @@ curriculum-engine/
 
 ---
 
-## Part 6 — Deploy the backend publicly
+## Part 6, Deploy the backend publicly
 
 You need a host that keeps a Python process running continuously.
 **Check current free-tier terms yourself** - they change.
@@ -146,7 +147,7 @@ Same flow at https://railway.app.
 
 ---
 
-## Part 7 — Deploy the frontend publicly
+## Part 7, Deploy the frontend publicly
 
 ### 7.1 Point it at your live backend
 In `frontend/index.html`, find:
@@ -167,7 +168,7 @@ that's "installable on desktop," already satisfied, no extra work.
 
 ---
 
-## Part 8 — Wrap it for Google Play
+## Part 8, Wrap it for Google Play
 
 The path here is a **Progressive Web App wrapped as a Trusted Web Activity
 (TWA)** - a real, Play-listed, downloadable Android app that displays
@@ -221,7 +222,7 @@ enough, but it must exist and be linked).
 
 ---
 
-## Part 9 — Common problems
+## Part 9, Common problems
 
 - **"Failed to fetch" in the browser console**: `API_BASE` in
   `index.html` doesn't match your actual backend URL, or the backend
@@ -241,7 +242,7 @@ enough, but it must exist and be linked).
 
 ---
 
-## Part 10 — Order of operations, summarized
+## Part 10, Order of operations, summarized
 
 1. Part 3 + 4 working locally (you're likely already here).
 2. Part 6: backend deployed, `/docs` loads publicly.

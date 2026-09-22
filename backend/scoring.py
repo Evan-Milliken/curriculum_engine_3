@@ -1,31 +1,38 @@
 """
-Resource Relevance and Quality Scoring — Methodology Section 6.
+Resource Relevance and Quality Scoring -- Methodology Section 6.
 
-Score(r) = w1*Rel(r) + w2*Qual(r) + w3*TimeFit(r) + w4*PrereqFit(r) + w5*Pref(r)
+Score(r) = w1*Rel(r) + w2*Qual(r) + w3*TimeFit(r) + w4*PrereqFit(r) + w5*Pref(r) + w6*Gain(r)
 
 Implementation notes / honest scope limits:
-- Rel(r): the methodology doc suggests sentence embeddings + cosine similarity.
-  Full sentence-transformer models (e.g. all-MiniLM-L6-v2) are a ~90MB download
-  and add real latency/memory cost on a free-tier server. This module uses
-  TF-IDF + cosine similarity as the default (scikit-learn, no network/model
-  download required) and isolates it behind `relevance_fn` so swapping in
-  sentence-transformers later is a one-line change. Flagged as Action Item #4.
+- Rel(r): TF-IDF + cosine similarity (scikit-learn, fully local, no
+  model download). A sentence-transformer embedding model would capture
+  semantic similarity beyond shared vocabulary, at the cost of a ~90MB
+  model download and real inference latency -- noted as a future upgrade,
+  not done here.
 - Qual(r): this MVP uses the static `quality` field seeded in resources.json
   (manually estimated 0-1). A real system needs an actual quality signal
-  (view counts, ratings, completion rates) — flagged as Action Item #2.
+  (view counts, ratings, completion rates) -- flagged in RESEARCH.md.
 - PrereqFit(r): 1.0 if the resource's own difficulty is achievable given the
   learner's current mastery of the resource's concept's prerequisites, else 0.
+- Gain(r): a REAL trained neural network's prediction of expected mastery
+  gain (backend/ml/predictor.py, backend/ml/train_gain_predictor.py) --
+  this is the concrete implementation of the "Gain_i" term the original
+  optimization objective (Section 7) always referenced but never defined.
+  See train_gain_predictor.py's docstring for what it was trained on and
+  why a neural network (not another hand-tuned formula) is used here.
 """
 from __future__ import annotations
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+from ml import predictor as gain_predictor
 
 DEFAULT_WEIGHTS = {
-    "relevance": 0.35,
-    "quality": 0.2,
-    "time_fit": 0.2,
+    "relevance": 0.25,
+    "quality": 0.15,
+    "time_fit": 0.15,
     "prereq_fit": 0.15,
-    "preference": 0.1,
+    "preference": 0.05,
+    "predicted_gain": 0.25,
 }
 
 
@@ -82,6 +89,7 @@ def score_resources(
     prereq_ok: bool,
     preferred_types: list[str],
     preferred_sources: list[str],
+    current_mastery: float = 0.0,
     weights: dict[str, float] = DEFAULT_WEIGHTS,
 ) -> list[dict]:
     """Score a candidate list of Resource objects already filtered to
@@ -93,12 +101,21 @@ def score_resources(
         tf = time_fit(r.duration_min, available_minutes)
         pf = 1.0 if prereq_ok else 0.0
         pref = preference_fit(r, preferred_types, preferred_sources)
+        duration_ratio = r.duration_min / available_minutes if available_minutes > 0 else 2.0
+        gain = gain_predictor.predict_gain(
+            mastery_before=current_mastery,
+            resource_difficulty=r.difficulty,
+            duration_ratio=duration_ratio,
+            prereq_satisfied=prereq_ok,
+            resource_quality=r.quality,
+        )
         total = (
             weights["relevance"] * rel
             + weights["quality"] * r.quality
             + weights["time_fit"] * tf
             + weights["prereq_fit"] * pf
             + weights["preference"] * pref
+            + weights["predicted_gain"] * max(0.0, gain)
         )
         out.append({
             "resource": r,
@@ -107,6 +124,7 @@ def score_resources(
             "time_fit": round(tf, 4),
             "prereq_fit": pf,
             "preference_fit": round(pref, 4),
+            "predicted_gain": round(gain, 4),
         })
     out.sort(key=lambda d: d["score"], reverse=True)
     return out
